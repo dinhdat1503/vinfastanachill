@@ -2158,17 +2158,25 @@ function vfvp_floating_sidebar() {
 
     <!-- Sticky Mobile Quick Action Bar (Đáy màn hình điện thoại) -->
     <div class="vf-mobile-bar show-for-medium">
-      <a href="tel:0562256256">
+      <a href="tel:0562256256" class="vf-mbar-item">
         <svg class="vf-mobile-bar-svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
         <span>Gọi ngay</span>
       </a>
-      <a href="<?php echo esc_url(home_url('/bao-gia-lan-banh/')); ?>">
-        <svg class="vf-mobile-bar-svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path></svg>
-        <span>Báo giá lăn bánh</span>
+      <a href="<?php echo esc_url(home_url('/bao-gia-lan-banh/')); ?>" class="vf-mbar-item">
+        <svg class="vf-mobile-bar-svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+        <span>Báo giá</span>
       </a>
-      <a href="<?php echo esc_url(home_url('/dang-ky-lai-thu/')); ?>">
+      <a href="<?php echo esc_url(home_url('/so-sanh-xe/')); ?>" class="vf-mbar-item">
+        <svg class="vf-mobile-bar-svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"></path><path d="M4 20L21 3"></path><path d="M21 16v5h-5"></path><path d="M15 15l6 6"></path><path d="M4 4l5 5"></path></svg>
+        <span>So sánh</span>
+      </a>
+      <a href="<?php echo esc_url(home_url('/du-toan-chi-phi/')); ?>" class="vf-mbar-item">
+        <svg class="vf-mobile-bar-svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path></svg>
+        <span>Dự toán</span>
+      </a>
+      <a href="<?php echo esc_url(home_url('/dang-ky-lai-thu/')); ?>" class="vf-mbar-item vf-mbar-cta">
         <svg class="vf-mobile-bar-svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="3" x2="12" y2="9"></line><line x1="4.2" y1="16.5" x2="9.4" y2="13.5"></line><line x1="19.8" y1="16.5" x2="14.6" y2="13.5"></line></svg>
-        <span>Đăng ký lái thử</span>
+        <span>Lái thử</span>
       </a>
     </div>
 

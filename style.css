@@ -2633,29 +2633,30 @@ body, html, button, input, select, textarea, p, h1, h2, h3, h4, h5, h6, a, span,
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: 56px;
   background: #ffffff;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
   z-index: 9999;
-  grid-template-columns: 1fr 1fr 1fr;
   border-top: 1px solid var(--vf-border);
 }
 
 .vf-mobile-bar a,
 .vf-mobile-bar button {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 2px;
   text-decoration: none;
   color: var(--vf-text-muted);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   background: transparent;
   border: none;
   cursor: pointer;
-  border-right: 1px solid var(--vf-border);
+  border-right: 1px solid rgba(226, 232, 240, 0.6);
+  white-space: nowrap;
 }
 
 .vf-mobile-bar a:last-child {
@@ -2748,10 +2749,10 @@ body, html, button, input, select, textarea, p, h1, h2, h3, h4, h5, h6, a, span,
 
   /* Hiển thị Mobile Bar dưới đáy */
   .vf-mobile-bar {
-    display: grid !important;
+    display: flex !important;
   }
   body {
-    padding-bottom: 60px !important;
+    padding-bottom: 56px !important;
   }
 }
 
@@ -11545,7 +11546,7 @@ input:checked + .vf-slider:before {
   text-decoration: none !important;
 }
 
-/* Sticky Mobile Quick Action Bar at bottom of screen */
+/* Sticky Mobile Quick Action Bar at bottom of screen (5 Items) */
 .vf-mobile-bar {
   position: fixed !important;
   bottom: 0 !important;
@@ -11557,39 +11558,59 @@ input:checked + .vf-slider:before {
   border-top: 1px solid #E2E8F0 !important;
   box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.08) !important;
   display: flex !important;
-  align-items: center !important;
+  align-items: stretch !important;
   justify-content: space-around !important;
   z-index: 99999 !important;
 }
 
 .vf-mobile-bar a,
-.vf-mobile-bar button {
+.vf-mobile-bar button,
+.vf-mbar-item {
   flex: 1 !important;
+  min-width: 0 !important;
   height: 56px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 3px !important;
+  gap: 2px !important;
   text-decoration: none !important;
   color: #1E293B !important;
-  font-size: 11px !important;
-  font-weight: 700 !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
   background: transparent !important;
   border: none !important;
-  padding: 0 !important;
+  border-right: 1px solid #F1F5F9 !important;
+  padding: 4px 2px !important;
   cursor: pointer !important;
+  white-space: nowrap !important;
+  transition: all 0.2s ease !important;
 }
 
-.vf-mobile-bar a:last-child {
+.vf-mbar-item span {
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.2px !important;
+}
+
+.vf-mobile-bar a:last-child,
+.vf-mbar-cta {
+  border-right: none !important;
   background: #2563EB !important;
   color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.vf-mobile-bar a:last-child .vf-mobile-bar-svg,
+.vf-mbar-cta .vf-mobile-bar-svg {
+  stroke: #ffffff !important;
 }
 
 .vf-mobile-bar-svg {
-  width: 20px !important;
-  height: 20px !important;
-  stroke-width: 2.2 !important;
+  width: 19px !important;
+  height: 19px !important;
+  stroke-width: 2 !important;
+  flex-shrink: 0 !important;
 }
 
 .vf-mobile-bar-icon {
