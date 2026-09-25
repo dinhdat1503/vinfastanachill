@@ -19,7 +19,17 @@
            document.querySelector('.vf-modal');
   }
 
+  function updatePromoBadges() {
+    var now = new Date();
+    var monthYear = (now.getMonth() + 1) + '/' + now.getFullYear();
+    var badges = document.querySelectorAll('.vf-modal-badge');
+    badges.forEach(function(badge) {
+      badge.textContent = '⚡ ƯU ĐÃI THÁNG ' + monthYear;
+    });
+  }
+
   window.vfOpenModal = function(id) {
+    updatePromoBadges();
     var m = getModalElement(id);
     if (m) {
       m.classList.add('open');
@@ -146,9 +156,11 @@
   }
 
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    updatePromoBadges();
     setTimeout(initAutoPopup, 500);
   } else {
     document.addEventListener('DOMContentLoaded', function() {
+      updatePromoBadges();
       setTimeout(initAutoPopup, 500);
     });
   }

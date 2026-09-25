@@ -2109,7 +2109,7 @@ function vfvp_floating_sidebar() {
           
           <div class="vf-modal-banner-top">
             <img src="<?php echo esc_url(content_url('/uploads/official_cars/common/logo-vfg-vinh-phuc.jpg')); ?>" alt="VinFast Logo" class="vf-modal-logo">
-            <span class="vf-modal-badge">⚡ ƯU ĐÃI THÁNG 7/2026</span>
+            <span class="vf-modal-badge">⚡ ƯU ĐÃI THÁNG <?php echo function_exists('wp_date') ? wp_date('n/Y') : date_i18n('n/Y'); ?></span>
           </div>
 
           <div class="vf-modal-banner-body">
