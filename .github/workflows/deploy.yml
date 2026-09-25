@@ -1,0 +1,20 @@
+name: Deploy Theme to VPS
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger aaPanel Webhook
+        run: |
+          if [ -n "${{ secrets.AAPANEL_WEBHOOK_URL }}" ]; then
+            echo "Calling aaPanel Webhook to auto-pull..."
+            curl -k "${{ secrets.AAPANEL_WEBHOOK_URL }}"
+          else
+            echo "AAPANEL_WEBHOOK_URL secret not set. Skipping webhook trigger."
+          fi
