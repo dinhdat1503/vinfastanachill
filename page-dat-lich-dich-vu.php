@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['vf_booking_nonce'])) 
         $body .= "- Địa điểm: " . $province . " (" . $location_type . ")\n";
         $body .= "- Thời gian: " . $date . " lúc " . $time . "\n";
 
-        $headers = ['Content-Type: text/plain; charset=UTF-8', 'From: VinFast Vĩnh Phúc <no-reply@' . $_SERVER['HTTP_HOST'] . '>'];
+        $headers = ['Content-Type: text/plain; charset=UTF-8', 'From: VinFast Tân Á Châu <no-reply@' . $_SERVER['HTTP_HOST'] . '>'];
         
         wp_mail($admin_email, $subject, $body, $headers);
         $submitted = true;

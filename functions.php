@@ -12,8 +12,7 @@ defined('ABSPATH') || exit;
 // =========================================================
 define('VFVP_CONTACT_EMAILS', [
     'ngodinhdat15@gmail.com',     // Email chính — quản lý đại lý
-    // 'email2@example.com',      // Thêm email khác vào đây khi cần
-    // 'email3@example.com',
+    'hoangbuizzzz15@gmail.com',   // Email nhận đồng thời
 ]);
 
 // --- SMTP Gmail: gửi mail qua tài khoản Gmail chính hãng ---
@@ -35,7 +34,7 @@ add_action('phpmailer_init', function($phpmailer) {
     $phpmailer->Password   = VFVP_SMTP_PASSWORD;
     $phpmailer->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
     $phpmailer->From       = VFVP_SMTP_USERNAME;
-    $phpmailer->FromName   = 'VinFast Vĩnh Phúc';
+    $phpmailer->FromName   = 'VinFast Tân Á Châu';
     $phpmailer->SMTPOptions = ['ssl' => ['verify_peer' => false, 'verify_peer_name' => false]];
 });
 
