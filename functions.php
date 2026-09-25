@@ -38,48 +38,24 @@ add_action('phpmailer_init', function($phpmailer) {
     $phpmailer->SMTPOptions = ['ssl' => ['verify_peer' => false, 'verify_peer_name' => false]];
 });
 
-// --- Đảm bảo wp_mail luôn gửi đến toàn bộ danh sách email ---
+// --- Đảm bảo wp_mail luôn gửi đến toàn bộ danh sách email (Tất cả đều là người nhận chính To:) ---
 add_filter('wp_mail', function($args) {
     $all_emails = VFVP_CONTACT_EMAILS;
     if (empty($all_emails)) return $args;
 
-    // Gom tất cả email thành chuỗi CC
-    $primary = $all_emails[0];
-    $cc_list = array_slice($all_emails, 1);
-
-    // Đặt người nhận chính
-    if (empty($args['to']) || $args['to'] === get_option('admin_email')) {
-        $args['to'] = $primary;
-    }
-
-    // Thêm CC cho các email còn lại
-    if (!empty($cc_list)) {
-        $existing_headers = is_array($args['headers']) ? $args['headers'] : (array) explode("\n", $args['headers']);
-        foreach ($cc_list as $cc_email) {
-            $existing_headers[] = 'Cc: ' . $cc_email;
-        }
-        $args['headers'] = $existing_headers;
-    }
+    // Đặt tất cả email đều là người nhận chính (To)
+    $args['to'] = $all_emails;
 
     return $args;
 });
 
-// --- CF7: Ghi đè recipient của tất cả form sang danh sách email chính hãng ---
+// --- CF7: Ghi đè recipient của tất cả form sang danh sách email nhận chính (cách nhau bởi dấu phẩy) ---
 add_filter('wpcf7_mail_components', function($components, $contact_form) {
-    $primary_email = VFVP_CONTACT_EMAILS[0] ?? get_option('admin_email');
-    $cc_emails     = array_slice(VFVP_CONTACT_EMAILS, 1);
+    $all_emails = VFVP_CONTACT_EMAILS;
+    if (empty($all_emails)) return $components;
 
-    // Đặt người nhận chính
-    $components['recipient'] = $primary_email;
-
-    // Thêm CC
-    if (!empty($cc_emails)) {
-        $additional = isset($components['additional_headers']) ? $components['additional_headers'] : '';
-        foreach ($cc_emails as $cc) {
-            $additional .= "\nCc: " . $cc;
-        }
-        $components['additional_headers'] = trim($additional);
-    }
+    // Trong Contact Form 7, danh sách người nhận chính cách nhau bằng dấu phẩy
+    $components['recipient'] = implode(', ', $all_emails);
 
     return $components;
 }, 10, 2);
@@ -3038,7 +3014,7 @@ function vf_handle_acc_order_submission() {
     $to = get_option('admin_email');
     $subject = '[ĐẶT MUA PHỤ KIỆN] ' . $prod_name . ' - ' . $name . ' (' . $phone . ')';
 
-    $body = "YÊU CẦU ĐẶT MUA PHỤ KIỆN TỪ WEBSITE VINFAST VĨNH PHÚC\n";
+    $body = "YÊU CẦU ĐẶT MUA PHỤ KIỆN TỪ WEBSITE VINFAST TÂN Á CHÂU\n";
     $body .= "--------------------------------------------------\n";
     $body .= "Sản phẩm phụ kiện: " . $prod_name . "\n";
     $body .= "Giá tham khảo: " . $prod_price . "\n";
@@ -3051,13 +3027,13 @@ function vf_handle_acc_order_submission() {
 
     $headers = [
         'Content-Type: text/plain; charset=UTF-8',
-        'From: VinFast Vĩnh Phúc <wordpress@' . (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost') . '>'
+        'From: VinFast Tân Á Châu <wordpress@' . (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost') . '>'
     ];
 
     wp_mail($to, $subject, $body, $headers);
 
     wp_send_json_success([
-        'message' => 'Cảm ơn bạn ' . $name . '! Yêu cầu đặt mua "' . $prod_name . '" đã được gửi thành công về hệ thống VinFast Vĩnh Phúc. Chuyên viên tư vấn sẽ liên hệ với bạn qua SĐT ' . $phone . ' ngay.'
+        'message' => 'Cảm ơn bạn ' . $name . '! Yêu cầu đặt mua "' . $prod_name . '" đã được gửi thành công về hệ thống VinFast Tân Á Châu. Chuyên viên tư vấn sẽ liên hệ với bạn qua SĐT ' . $phone . ' ngay.'
     ]);
 }
 
