@@ -2108,7 +2108,7 @@ function vfvp_floating_sidebar() {
           <button type="button" class="vf-modal-close-btn" onclick="vfCloseModal()" aria-label="Đóng">×</button>
           
           <div class="vf-modal-banner-top">
-            <img src="<?php echo esc_url(content_url('/uploads/official_cars/common/logo-vfg-vinh-phuc.jpg')); ?>" alt="VinFast Logo" class="vf-modal-logo">
+            <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/logo-tac-trang.png'); ?>" alt="VinFast Tân Á Châu" class="vf-modal-logo">
             <span class="vf-modal-badge">⚡ ƯU ĐÃI THÁNG <?php echo function_exists('wp_date') ? wp_date('n/Y') : date_i18n('n/Y'); ?></span>
           </div>
 
@@ -2983,8 +2983,8 @@ function vfvp_render_acc_form() {
 
 // Enqueue main.js & vfvp-modal.js for VinFast Vĩnh Phúc
 add_action('wp_enqueue_scripts', function() {
-    wp_enqueue_script('vfvp-modal-js', get_stylesheet_directory_uri() . '/assets/js/vfvp-modal.js', [], '1.1.0', true);
-    wp_enqueue_script('vfvp-main-js', get_stylesheet_directory_uri() . '/assets/js/main.js', ['jquery'], '1.1.0', true);
+    wp_enqueue_script('vfvp-modal-js', get_stylesheet_directory_uri() . '/assets/js/vfvp-modal.js', [], time(), true);
+    wp_enqueue_script('vfvp-main-js', get_stylesheet_directory_uri() . '/assets/js/main.js', ['jquery'], time(), true);
     wp_localize_script('vfvp-main-js', 'vfvp_vars', [
         'ajax_url' => admin_url('admin-ajax.php'),
         'nonce'    => wp_create_nonce('vfvp_ajax_nonce')

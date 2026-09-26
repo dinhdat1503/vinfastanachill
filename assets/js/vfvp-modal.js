@@ -26,6 +26,19 @@
     badges.forEach(function(badge) {
       badge.textContent = '⚡ ƯU ĐÃI THÁNG ' + monthYear;
     });
+
+    var modalLogos = document.querySelectorAll('.vf-modal-logo');
+    modalLogos.forEach(function(logo) {
+      if (logo.src.indexOf('logo-tac-trang.png') === -1) {
+        var wpContentIdx = logo.src.indexOf('/wp-content/');
+        if (wpContentIdx !== -1) {
+          logo.src = logo.src.substring(0, wpContentIdx) + '/wp-content/themes/flatsome-child/assets/images/logo-tac-trang.png';
+        }
+        logo.alt = 'VinFast Tân Á Châu';
+      }
+      logo.style.setProperty('background', 'transparent', 'important');
+      logo.style.setProperty('padding', '0', 'important');
+    });
   }
 
   window.vfOpenModal = function(id) {

@@ -1841,12 +1841,15 @@ body, html, button, input, select, textarea, p, h1, h2, h3, h4, h5, h6, a, span,
 }
 
 .vf-modal-logo {
-  height: 26px;
+  height: 38px;
+  max-height: 42px;
   width: auto;
-  border-radius: 4px;
+  max-width: 170px;
+  border-radius: 0;
   object-fit: contain;
-  background: #ffffff;
-  padding: 2px 6px;
+  background: transparent !important;
+  padding: 0 !important;
+  display: block;
 }
 
 .vf-modal-badge {
