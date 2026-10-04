@@ -76,115 +76,25 @@ add_action('init', function() {
     }
 });
 
-// Auto process VF 5 color images background removal (Flood-fill algorithm)
-add_action('init', 'vfvp_process_vf5_color_cutouts');
-function vfvp_process_vf5_color_cutouts() {
-    $vftanuyen_vf5 = 'C:/Users/ngodi/Job Freelancer/Local Sites/vftanuyen/app/public/wp-content/uploads/vinfast-vf5/';
-    $target_dir    = WP_CONTENT_DIR . '/uploads/official_cars/vf5/';
-    
-    $files = [
-        '5-trang.webp' => 'vf5_color_trang.png',
-        '5-cam.webp'   => 'vf5_color_cam.png',
-        '5-xanh.webp'  => 'vf5_color_xanh.png',
-        '5-bac.webp'   => 'vf5_color_bac.png',
-        '5den.webp'    => 'vf5_color_den.png',
-    ];
-    
-    foreach ($files as $src_name => $dst_name) {
-        $src_path = $vftanuyen_vf5 . $src_name;
-        $dst_path = $target_dir . $dst_name;
-        
-        if (file_exists($src_path) && (!file_exists($dst_path) || filesize($dst_path) < 5000)) {
-            @wp_mkdir_p($target_dir);
-            @vfvp_flood_fill_remove_bg($src_path, $dst_path);
-        }
-    }
-}
-
-function vfvp_flood_fill_remove_bg($src_path, $dst_path) {
-    if (!function_exists('imagecreatefromwebp') && !function_exists('imagecreatefromstring')) return false;
-    
-    $img = @imagecreatefromwebp($src_path);
-    if (!$img) {
-        $img = @imagecreatefromstring(file_get_contents($src_path));
-    }
-    if (!$img) return false;
-
-    $w = imagesx($img);
-    $h = imagesy($img);
-
-    $corner_rgb = imagecolorat($img, 0, 0);
-    $bg_r = ($corner_rgb >> 16) & 0xFF;
-    $bg_g = ($corner_rgb >> 8) & 0xFF;
-    $bg_b = $corner_rgb & 0xFF;
-
-    $out = imagecreatetruecolor($w, $h);
-    imagealphablending($out, false);
-    imagesavealpha($out, true);
-    imagecopy($out, $img, 0, 0, 0, 0, $w, $h);
-
-    $transparent = imagecolorallocatealpha($out, 0, 0, 0, 127);
-    $visited = array_fill(0, $h, array_fill(0, $w, false));
-
-    $queue = [];
-    for ($x = 0; $x < $w; $x++) {
-        $queue[] = [$x, 0];
-        $queue[] = [$x, $h - 1];
-    }
-    for ($y = 0; $y < $h; $y++) {
-        $queue[] = [0, $y];
-        $queue[] = [$w - 1, $y];
-    }
-
-    $head = 0;
-    while ($head < count($queue)) {
-        list($cx, $cy) = $queue[$head++];
-        if ($cx < 0 || $cx >= $w || $cy < 0 || $cy >= $h) continue;
-        if ($visited[$cy][$cx]) continue;
-        
-        $visited[$cy][$cx] = true;
-
-        $rgb = imagecolorat($img, $cx, $cy);
-        $r = ($rgb >> 16) & 0xFF;
-        $g = ($rgb >> 8) & 0xFF;
-        $b = $rgb & 0xFF;
-
-        $dist = sqrt(($r - $bg_r)**2 + ($g - $bg_g)**2 + ($b - $bg_b)**2);
-
-        if ($dist < 26) {
-            imagesetpixel($out, $cx, $cy, $transparent);
-
-            if ($cx > 0 && !$visited[$cy][$cx - 1]) $queue[] = [$cx - 1, $cy];
-            if ($cx < $w - 1 && !$visited[$cy][$cx + 1]) $queue[] = [$cx + 1, $cy];
-            if ($cy > 0 && !$visited[$cy - 1][$cx]) $queue[] = [$cx, $cy - 1];
-            if ($cy < $h - 1 && !$visited[$cy + 1][$cx]) $queue[] = [$cx, $cy + 1];
-        }
-    }
-
-    imagepng($out, $dst_path, 6);
-    imagedestroy($img);
-    imagedestroy($out);
-    return true;
-}
 // 1. ENQUEUE STYLES & SCRIPTS
 // ============================================================
 add_action('wp_enqueue_scripts', 'vfvp_enqueue_assets');
 function vfvp_enqueue_assets() {
     // Parent theme
     wp_enqueue_style('flatsome-parent', get_template_directory_uri() . '/style.css');
-    // Child theme
-    wp_enqueue_style('flatsome-child', get_stylesheet_directory_uri() . '/style.css', ['flatsome-parent'], time());
-    // Google Fonts (Mulish, Plus Jakarta Sans & Inter - Full Vietnamese Support)
-    wp_enqueue_style('vfvp-fonts', 'https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300..900;1,300..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap', [], null);
+    // Child theme - Cache-friendly version
+    wp_enqueue_style('flatsome-child', get_stylesheet_directory_uri() . '/style.css', ['flatsome-parent'], '1.2.1');
+    // Google Fonts (Tối ưu tải nhanh, chỉ lấy trọng số cần thiết)
+    wp_enqueue_style('vfvp-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap', [], null);
     // Swiper.js
     wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', [], '11');
     wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], '11', true);
     // GLightbox
     wp_enqueue_style('glightbox', 'https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css', [], '3');
     wp_enqueue_script('glightbox', 'https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js', [], '3', true);
-    // Child JS
-    wp_enqueue_script('vfvp-main', get_stylesheet_directory_uri() . '/assets/js/main.js', ['jquery', 'swiper-js'], time(), true);
-    wp_enqueue_script('vfvp-modal', get_stylesheet_directory_uri() . '/assets/js/vfvp-modal.js', [], time(), true);
+    // Child JS - Cache-friendly version
+    wp_enqueue_script('vfvp-main', get_stylesheet_directory_uri() . '/assets/js/main.js', ['jquery', 'swiper-js'], '1.2.1', true);
+    wp_enqueue_script('vfvp-modal', get_stylesheet_directory_uri() . '/assets/js/vfvp-modal.js', [], '1.2.1', true);
 
     // AJAX
     wp_localize_script('vfvp-main', 'vfvpAjax', [
