@@ -21,23 +21,28 @@
 
   function updatePromoBadges() {
     var now = new Date();
-    var monthYear = (now.getMonth() + 1) + '/' + now.getFullYear();
-    var badges = document.querySelectorAll('.vf-modal-badge');
+    var currentMonth = now.getMonth() + 1;
+    var currentYear = now.getFullYear();
+    var monthYearStr = currentMonth + '/' + currentYear;
+
+    var badges = document.querySelectorAll('.vf-modal-badge, [data-promo-badge]');
     badges.forEach(function(badge) {
-      badge.textContent = '⚡ ƯU ĐÃI THÁNG ' + monthYear;
+      badge.textContent = '⚡ ƯU ĐÃI THÁNG ' + monthYearStr;
     });
 
     var modalLogos = document.querySelectorAll('.vf-modal-logo');
     modalLogos.forEach(function(logo) {
-      if (logo.src.indexOf('logo-tac-trang.png') === -1) {
+      if (logo.src.indexOf('logo-tan-a-chau-white-horizontal.png') === -1) {
         var wpContentIdx = logo.src.indexOf('/wp-content/');
         if (wpContentIdx !== -1) {
-          logo.src = logo.src.substring(0, wpContentIdx) + '/wp-content/themes/flatsome-child/assets/images/logo-tac-trang.png';
+          logo.src = logo.src.substring(0, wpContentIdx) + '/wp-content/themes/flatsome-child/assets/images/logo-tan-a-chau-white-horizontal.png';
         }
-        logo.alt = 'VinFast Tân Á Châu';
       }
+      logo.alt = 'VinFast Tân Á Châu';
       logo.style.setProperty('background', 'transparent', 'important');
       logo.style.setProperty('padding', '0', 'important');
+      logo.style.setProperty('border', 'none', 'important');
+      logo.style.setProperty('border-radius', '0', 'important');
     });
   }
 
@@ -168,14 +173,29 @@
     }, 15000);
   }
 
+  // Execute immediately upon script parse
+  updatePromoBadges();
+
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
     updatePromoBadges();
-    setTimeout(initAutoPopup, 500);
+    setTimeout(initAutoPopup, 400);
   } else {
     document.addEventListener('DOMContentLoaded', function() {
       updatePromoBadges();
-      setTimeout(initAutoPopup, 500);
+      setTimeout(initAutoPopup, 400);
     });
+  }
+  window.addEventListener('load', updatePromoBadges);
+
+  // Observer to catch any dynamic modal insertions or cache delays
+  if (typeof MutationObserver !== 'undefined') {
+    var promoObserver = new MutationObserver(function() {
+      updatePromoBadges();
+    });
+    promoObserver.observe(document.documentElement, { childList: true, subtree: true });
+    setTimeout(function() {
+      promoObserver.disconnect();
+    }, 6000);
   }
 
 })();

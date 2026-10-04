@@ -1836,32 +1836,38 @@ body, html, button, input, select, textarea, p, h1, h2, h3, h4, h5, h6, a, span,
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   padding-right: 36px;
+  gap: 12px;
 }
 
 .vf-modal-logo {
-  height: 38px;
-  max-height: 42px;
+  height: 28px;
+  max-height: 32px;
   width: auto;
-  max-width: 170px;
-  border-radius: 0;
-  object-fit: contain;
+  max-width: 220px;
+  border-radius: 0 !important;
+  object-fit: contain !important;
   background: transparent !important;
   padding: 0 !important;
+  border: none !important;
   display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
 }
 
 .vf-modal-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   background: linear-gradient(90deg, #F59E0B 0%, #D97706 100%);
   color: #ffffff;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
   text-transform: uppercase;
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: 12px;
   letter-spacing: 0.5px;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(217, 119, 6, 0.4);
 }
 
 .vf-modal-banner-body {
@@ -2008,16 +2014,29 @@ body, html, button, input, select, textarea, p, h1, h2, h3, h4, h5, h6, a, span,
     border-radius: 16px;
   }
   .vf-modal-banner {
-    padding: 20px;
+    padding: 16px 18px 14px 18px;
+  }
+  .vf-modal-banner-top {
+    padding-right: 32px;
+    margin-bottom: 8px;
+    gap: 8px;
+  }
+  .vf-modal-logo {
+    height: 22px;
+    max-width: 175px;
+  }
+  .vf-modal-badge {
+    font-size: 10px;
+    padding: 3px 8px;
   }
   .vf-modal-banner-car {
     display: none;
   }
   .vf-modal-heading {
-    font-size: 17px;
+    font-size: 16px;
   }
   .vf-modal-body {
-    padding: 18px 20px;
+    padding: 16px 18px;
   }
   .vf-cf7-grid,
   .vf-cf7-quote-wrapper {
