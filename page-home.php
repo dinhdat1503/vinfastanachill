@@ -46,7 +46,7 @@ $xe_dich_vu = get_posts([
         <picture>
           <source media="(max-width: 768px)" srcset="https://static-cms-prod.vinfastauto.com/len-doi-4-banh-len-cap-trai-nghiem-mobile.webp">
           <img src="https://static-cms-prod.vinfastauto.com/len-doi-4-banh-len-cap-trai-nghiem-desktop.webp"
-               alt="VinFast - Lên đời 4 bánh xe điện" class="vf-slide-img">
+               alt="VinFast - Lên đời 4 bánh xe điện" class="vf-slide-img" fetchpriority="high">
         </picture>
         <div class="vf-slide-overlay"></div>
         <div class="vf-slide-content">
@@ -71,7 +71,7 @@ $xe_dich_vu = get_posts([
         <picture>
           <source media="(max-width: 768px)" srcset="https://static-cms-prod.vinfastauto.com/vinfast-len-doi-xe-dien-voucher-80-trieu-mobile.jpg">
           <img src="https://static-cms-prod.vinfastauto.com/vinfast-len-doi-xe-dien-voucher-80-trieu-desktop.jpg"
-               alt="VinFast - Voucher 80 triệu" class="vf-slide-img">
+               alt="VinFast - Voucher 80 triệu" class="vf-slide-img" loading="lazy">
         </picture>
         <div class="vf-slide-overlay"></div>
         <div class="vf-slide-content">
@@ -92,7 +92,7 @@ $xe_dich_vu = get_posts([
         <picture>
           <source media="(max-width: 768px)" srcset="https://static-cms-prod.vinfastauto.com/thu-nhap-hieu-qua-du-ngay-hay-dem-mobile.webp">
           <img src="https://static-cms-prod.vinfastauto.com/thu-nhap-hieu-qua-du-ngay-hay-dem-desktop.webp"
-               alt="VinFast Xe Dịch Vụ" class="vf-slide-img">
+               alt="VinFast Xe Dịch Vụ" class="vf-slide-img" loading="lazy">
         </picture>
         <div class="vf-slide-overlay"></div>
         <div class="vf-slide-content">
@@ -357,7 +357,7 @@ $xe_dich_vu = get_posts([
             <img src="<?php echo esc_url($car['img']); ?>"
                  alt="<?php echo esc_attr($car['name']); ?>"
                  class="vf-showcase-img"
-                 loading="eager">
+                 loading="lazy">
           </a>
 
           <!-- BẢNG THÔNG SỐ CHUẨN 4 CỘT -->
@@ -469,13 +469,13 @@ if (!empty($accessories)):
       <!-- Left Column Cards -->
       <div class="vf-charging-left">
         <!-- Card 1: Trạm sạc ô tô điện -->
-        <a href="<?php echo esc_url(home_url('/dich-vu-pin-oto-dien/')); ?>" class="vf-charging-card" style="display:block; text-decoration:none; background: linear-gradient(180deg, rgba(15,23,42,0.1) 0%, rgba(15,23,42,0.85) 100%), url('https://vinhphucvinfast.com/wp-content/uploads/2025/09/anh-1-1722-768x432.jpg') center/cover no-repeat;">
+        <a href="<?php echo esc_url(home_url('/dich-vu-pin-oto-dien/')); ?>" class="vf-charging-card" style="display:block; text-decoration:none; background: linear-gradient(180deg, rgba(15,23,42,0.1) 0%, rgba(15,23,42,0.85) 100%), url('<?php echo esc_url(vfvp_get_charging_image_url('charging_station_car.jpg')); ?>') center/cover no-repeat;">
           <div class="vf-charging-card-overlay">
             <h3 class="vf-charging-card-title">Pin & Trạm sạc ô tô điện</h3>
           </div>
         </a>
         <!-- Card 2: Giải pháp năng lượng V-GREEN -->
-        <a href="<?php echo esc_url(home_url('/tim-kiem-showroom-tram-sac/')); ?>" class="vf-charging-card" style="display:block; text-decoration:none; background: linear-gradient(180deg, rgba(15,23,42,0.1) 0%, rgba(15,23,42,0.85) 100%), url('https://vinhphucvinfast.com/wp-content/uploads/2025/09/ap-gia-dien-kinh-doanh-cho-tram-sac-vneconomyautomotive-1-768x512.jpg') center/cover no-repeat;">
+        <a href="<?php echo esc_url(home_url('/tim-kiem-showroom-tram-sac/')); ?>" class="vf-charging-card" style="display:block; text-decoration:none; background: linear-gradient(180deg, rgba(15,23,42,0.1) 0%, rgba(15,23,42,0.85) 100%), url('<?php echo esc_url(vfvp_get_charging_image_url('charging_station_vgreen.jpg')); ?>') center/cover no-repeat;">
           <div class="vf-charging-card-overlay">
             <h3 class="vf-charging-card-title">Hệ thống trạm sạc V-GREEN phủ rộng toàn quốc</h3>
           </div>

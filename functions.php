@@ -221,40 +221,18 @@ function vfvp_get_charging_image_url($key) {
     $cars_dir   = $upload_dir['basedir'] . '/official_cars';
     $cars_url   = $upload_dir['baseurl'] . '/official_cars';
 
-    if (!file_exists($cars_dir)) {
-        wp_mkdir_p($cars_dir);
+    // Check common folder first
+    $common_file = $cars_dir . '/common/' . $key;
+    if (file_exists($common_file) && filesize($common_file) > 1000) {
+        return $cars_url . '/common/' . $key;
     }
-
-    $exact_map = [
-        'charging_station_car.jpg' => 'https://vinhphucvinfast.com/wp-content/uploads/2025/09/anh-1-1722-768x432.jpg',
-        'charging_station_vgreen.jpg' => 'https://vinhphucvinfast.com/wp-content/uploads/2025/09/ap-gia-dien-kinh-doanh-cho-tram-sac-vneconomyautomotive-1-768x512.jpg',
-        'portable_charger.webp' => 'https://static-cms-prod.vinfastauto.com/statics/img/homepage-v2/mobile-charger.webp'
-    ];
 
     $dest_file = $cars_dir . '/' . $key;
-
     if (file_exists($dest_file) && filesize($dest_file) > 1000) {
-        return $cars_url . '/' . $key . '?v=' . filemtime($dest_file);
+        return $cars_url . '/' . $key;
     }
 
-    if (isset($exact_map[$key])) {
-        $url = $exact_map[$key];
-        $response = wp_remote_get($url, [
-            'timeout' => 15,
-            'sslverify' => false,
-            'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        ]);
-        if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
-            $body = wp_remote_retrieve_body($response);
-            if (!empty($body) && strlen($body) > 1000) {
-                file_put_contents($dest_file, $body);
-                return $cars_url . '/' . $key . '?v=' . filemtime($dest_file);
-            }
-        }
-        return $url;
-    }
-
-    return '';
+    return content_url('/uploads/official_cars/common/' . $key);
 }
 
 // ============================================================
