@@ -85,6 +85,15 @@ function vfvp_enqueue_assets() {
     // Child theme - Auto-cache-busting version based on file modification time
     $css_ver = filemtime(get_stylesheet_directory() . '/style.css');
     wp_enqueue_style('flatsome-child', get_stylesheet_directory_uri() . '/style.css', ['flatsome-parent'], $css_ver);
+    
+    // Inject custom inline CSS to forcefully bypass all browser caching for these specific elements
+    $force_white_css = "
+        .vf9-interior-overlay h3, .vf9-interior-overlay p,
+        .vf9-privilege-banner h3, .vf9-privilege-banner p, .vf9-privilege-banner li {
+            color: #ffffff !important;
+        }
+    ";
+    wp_add_inline_style('flatsome-child', $force_white_css);
     // Google Fonts (Tối ưu tải nhanh, chỉ lấy trọng số cần thiết)
     wp_enqueue_style('vfvp-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap', [], null);
     // Swiper.js
