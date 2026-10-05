@@ -996,7 +996,7 @@ $uploads_url = content_url('/uploads/official_cars/vf8_allnew');
         <span class="vf-subnav-price-label" style="font-size:11px; color:#64748B;">Giá niêm yết từ</span>
         <span class="vf-subnav-price-val" id="subnav-price-display-vf8an">899.000.000 VNĐ</span>
       </div>
-      <a href="#configurator" class="vf-btn vf-btn-primary">ĐẶT CỌC NGAY</a>
+      <a href="<?php echo esc_url(home_url('/dat-coc-xe/?car=vf8-allnew')); ?>" class="vf-btn vf-btn-primary">ĐẶT CỌC NGAY</a>
     </div>
   </div>
 </div>
@@ -1730,6 +1730,17 @@ $uploads_url = content_url('/uploads/official_cars/vf8_allnew');
       return Math.round(num).toLocaleString('vi-VN');
     }
   })();
+
+  function goToDepositPage(slug) {
+    var colorEl = document.querySelector('[id$="ColorLabel"], [id$="color-label"], .vf-selected-color, .vf9-selected-color-label');
+    var color = '';
+    if (colorEl) {
+      color = colorEl.textContent.replace(/^[^:]*:\s*/, '').trim();
+    }
+    var url = '<?php echo esc_url(home_url('/dat-coc-xe/')); ?>?car=' + encodeURIComponent(slug);
+    if (color) url += '&color=' + encodeURIComponent(color);
+    window.location.href = url;
+  }
 </script>
 
 <?php get_footer(); ?>

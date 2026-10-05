@@ -737,6 +737,17 @@ function vfSwitchWildSpecTab(tabId, btn) {
     btn.classList.add('active');
   }
 }
+
+  function goToDepositPage(slug) {
+    var colorEl = document.querySelector('[id$="ColorLabel"], [id$="color-label"], .vf-selected-color, .vf9-selected-color-label');
+    var color = '';
+    if (colorEl) {
+      color = colorEl.textContent.replace(/^[^:]*:\s*/, '').trim();
+    }
+    var url = '<?php echo esc_url(home_url('/dat-coc-xe/')); ?>?car=' + encodeURIComponent(slug);
+    if (color) url += '&color=' + encodeURIComponent(color);
+    window.location.href = url;
+  }
 </script>
 
 <?php get_footer(); ?>

@@ -2963,3 +2963,92 @@ add_action('init', function() {
 
 
 
+
+
+// ============================================================
+// 🚗 AUTO CREATE PAGE ĐẶT CỌC XE & XỬ LÝ FORM ĐẶT CỌC
+// ============================================================
+add_action('init', function() {
+    if (get_transient('vfvp_deposit_page_created_v2')) return;
+
+    $deposit_page = get_page_by_path('dat-coc-xe');
+    if (!$deposit_page) {
+        $deposit_page = get_page_by_path('dat-coc');
+    }
+
+    if (!$deposit_page) {
+        $page_id = wp_insert_post([
+            'post_title'     => 'Đặt Cọc Xe Điện VinFast Online',
+            'post_name'      => 'dat-coc-xe',
+            'post_status'    => 'publish',
+            'post_type'      => 'page',
+            'comment_status' => 'closed',
+        ]);
+        if ($page_id) {
+            update_post_meta($page_id, '_wp_page_template', 'page-dat-coc.php');
+        }
+    } else {
+        update_post_meta($deposit_page->ID, '_wp_page_template', 'page-dat-coc.php');
+    }
+
+    set_transient('vfvp_deposit_page_created_v2', 1, DAY_IN_SECONDS);
+});
+
+// Xử lý AJAX Form Đặt Cọc Xe
+add_action('wp_ajax_vf_submit_deposit_form', 'vfvp_handle_deposit_form_ajax');
+add_action('wp_ajax_nopriv_vf_submit_deposit_form', 'vfvp_handle_deposit_form_ajax');
+function vfvp_handle_deposit_form_ajax() {
+    check_ajax_referer('vf_deposit_nonce', 'vf_deposit_nonce_field');
+
+    $name     = sanitize_text_field($_POST['customer_name'] ?? '');
+    $phone    = sanitize_text_field($_POST['customer_phone'] ?? '');
+    $email    = sanitize_email($_POST['customer_email'] ?? '');
+    $car      = sanitize_text_field($_POST['car_model'] ?? '');
+    $battery  = sanitize_text_field($_POST['battery_type'] ?? '');
+    $color    = sanitize_text_field($_POST['car_color'] ?? '');
+    $payment  = sanitize_text_field($_POST['payment_type'] ?? '');
+    $location = sanitize_text_field($_POST['delivery_location'] ?? '');
+    $note     = sanitize_textarea_field($_POST['customer_note'] ?? '');
+
+    if (empty($name) || empty($phone)) {
+        wp_send_json_error(['message' => 'Vui lòng điền đầy đủ họ tên và số điện thoại.']);
+    }
+
+    // Tiêu đề email
+    $subject = "⚡ [YÊU CẦU ĐẶT CỌC XE] {$car} - Khách hàng: {$name} ({$phone})";
+
+    // Nội dung email
+    $body  = "Kính gửi Ban Quản Lý VinFast Tân Á Châu,\n\n";
+    $body .= "Hệ thống vừa ghi nhận một YÊU CẦU ĐẶT CỌC XE ĐIỆN mới với thông tin chi tiết như sau:\n";
+    $body .= "--------------------------------------------------------\n";
+    $body .= "👤 Họ và tên khách hàng: {$name}\n";
+    $body .= "📞 Số điện thoại: {$phone}\n";
+    $body .= "📧 Email: {$email}\n";
+    $body .= "🚗 Dòng xe đặt cọc: {$car}\n";
+    $body .= "🔋 Gói Pin: {$battery}\n";
+    $body .= "🎨 Màu ngoại thất: {$color}\n";
+    $body .= "💳 Hình thức thanh toán: {$payment}\n";
+    $body .= "📍 Địa điểm nhận xe: {$location}\n";
+    $body .= "📝 Ghi chú của khách: {$note}\n";
+    $body .= "⏱️ Thời gian gửi: " . current_time('d/m/Y H:i:s') . "\n";
+    $body .= "--------------------------------------------------------\n\n";
+    $body .= "Vui lòng liên hệ lại khách hàng trong vòng 10 phút để xác nhận đơn cọc và gửi phiếu thu hợp đồng.\n\n";
+    $body .= "Trân trọng,\nHệ Thống Website VinFast Tân Á Châu";
+
+    $headers = [
+        'Content-Type: text/plain; charset=UTF-8',
+        'From: VinFast Tân Á Châu <' . (defined('VFVP_SMTP_USERNAME') ? VFVP_SMTP_USERNAME : get_option('admin_email')) . '>',
+    ];
+    if (!empty($email)) {
+        $headers[] = 'Reply-To: ' . $email;
+    }
+
+    $emails = defined('VFVP_CONTACT_EMAILS') ? VFVP_CONTACT_EMAILS : [get_option('admin_email')];
+    @wp_mail($emails, $subject, $body, $headers);
+
+    wp_send_json_success([
+        'message' => 'Gửi yêu cầu đặt cọc thành công!',
+        'car'     => $car,
+        'name'    => $name
+    ]);
+}

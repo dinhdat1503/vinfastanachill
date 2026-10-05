@@ -168,7 +168,7 @@ $uploads_url = content_url('/uploads/official_cars/vf3');
         <span class="vf-subnav-price-label" style="font-size:11px; color:#64748B;">Giá niêm yết từ</span>
         <span class="vf-subnav-price-val" id="subnav-price-display-vf3">285.000.000 VNĐ</span>
       </div>
-      <a href="#configurator" class="vf-btn vf-btn-primary">ĐẶT CỌC NGAY</a>
+      <a href="<?php echo esc_url(home_url('/dat-coc-xe/?car=vf3')); ?>" class="vf-btn vf-btn-primary">ĐẶT CỌC NGAY</a>
     </div>
   </div>
 </div>
@@ -254,7 +254,7 @@ $uploads_url = content_url('/uploads/official_cars/vf3');
         </div>
         <div style="display: flex; gap: 12px;">
           <a href="<?php echo esc_url(home_url('/mua-xe-tra-gop/')); ?>" class="vf-btn vf-btn-outline">DỰ TOÁN CHI PHÍ</a>
-          <button class="vf-btn vf-btn-primary" onclick="alert('Đã gửi yêu cầu tư vấn đặt cọc VinFast VF 3!')">ĐẶT CỌC ONLINE</button>
+          <button type="button" class="vf-btn vf-btn-primary" onclick="goToDepositPage('vf3')">ĐẶT CỌC ONLINE</button>
         </div>
       </div>
 
@@ -621,6 +621,17 @@ $uploads_url = content_url('/uploads/official_cars/vf3');
 
     if (tabKey === 'kich-thuoc') document.getElementById('vf3SpecTabKichThuoc').style.display = 'table';
     if (tabKey === 'pin-sac') document.getElementById('vf3SpecTabPinSac').style.display = 'table';
+  }
+
+  function goToDepositPage(slug) {
+    var colorEl = document.querySelector('[id$="ColorLabel"], [id$="color-label"], .vf-selected-color, .vf9-selected-color-label');
+    var color = '';
+    if (colorEl) {
+      color = colorEl.textContent.replace(/^[^:]*:\s*/, '').trim();
+    }
+    var url = '<?php echo esc_url(home_url('/dat-coc-xe/')); ?>?car=' + encodeURIComponent(slug);
+    if (color) url += '&color=' + encodeURIComponent(color);
+    window.location.href = url;
   }
 </script>
 
