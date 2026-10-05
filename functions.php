@@ -83,7 +83,7 @@ function vfvp_enqueue_assets() {
     // Parent theme
     wp_enqueue_style('flatsome-parent', get_template_directory_uri() . '/style.css');
     // Child theme - Cache-friendly version
-    wp_enqueue_style('flatsome-child', get_stylesheet_directory_uri() . '/style.css', ['flatsome-parent'], '1.2.1');
+    wp_enqueue_style('flatsome-child', get_stylesheet_directory_uri() . '/style.css', ['flatsome-parent'], '1.2.2');
     // Google Fonts (Tối ưu tải nhanh, chỉ lấy trọng số cần thiết)
     wp_enqueue_style('vfvp-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap', [], null);
     // Swiper.js

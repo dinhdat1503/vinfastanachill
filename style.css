@@ -12236,7 +12236,13 @@ a[href="#so-sanh-chi-phi"] {
   display: none !important;
 }
 
-
-
-
-
+/* =====================================================
+   FORCE WHITE TEXT FOR PRODUCT PAGE OVERLAYS
+   ===================================================== */
+.vf9-interior-overlay h3,
+.vf9-interior-overlay p,
+.vf9-privilege-banner h3,
+.vf9-privilege-banner p,
+.vf9-privilege-banner li {
+  color: #ffffff !important;
+}
