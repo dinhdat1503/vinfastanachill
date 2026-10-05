@@ -76,6 +76,62 @@ add_action('init', function() {
     }
 });
 
+// ============================================================
+// 🚀 TỰ ĐỘNG XÓA TOÀN BỘ CACHE KHI CÓ CODE MỚI DEPLOY (AUTO PURGE CACHE)
+// ============================================================
+add_action('init', function() {
+    $style_file = get_stylesheet_directory() . '/style.css';
+    if (!file_exists($style_file)) return;
+    
+    $current_ver = (string) filemtime($style_file);
+    $last_ver    = (string) get_option('vfvp_deployed_version', '');
+    
+    // Nếu phát hiện code mới được pull về (timestamp thay đổi)
+    if ($current_ver !== $last_ver) {
+        update_option('vfvp_deployed_version', $current_ver);
+        
+        // 1. Xóa WordPress Object Cache
+        if (function_exists('wp_cache_flush')) {
+            @wp_cache_flush();
+        }
+        
+        // 2. Xóa LiteSpeed Cache (nếu dùng LiteSpeed trên aaPanel/server)
+        if (has_action('litespeed_purge_all')) {
+            do_action('litespeed_purge_all');
+        }
+        
+        // 3. Xóa WP Rocket (nếu có)
+        if (function_exists('rocket_clean_domain')) {
+            @rocket_clean_domain();
+        }
+        
+        // 4. Xóa WP Super Cache (nếu có)
+        if (function_exists('wp_cache_clear_cache')) {
+            @wp_cache_clear_cache();
+        }
+        
+        // 5. Xóa W3 Total Cache (nếu có)
+        if (function_exists('w3tc_flush_all')) {
+            @w3tc_flush_all();
+        }
+        
+        // 6. Reset PHP OPcache để nạp ngay các file PHP mới vào RAM
+        if (function_exists('opcache_reset')) {
+            @opcache_reset();
+        }
+    }
+});
+
+// Thêm watermark build version trong HTML <head> để kiểm tra tức thì
+add_action('wp_head', function() {
+    $ver = get_option('vfvp_deployed_version', '');
+    if (!$ver) {
+        $style_file = get_stylesheet_directory() . '/style.css';
+        $ver = file_exists($style_file) ? filemtime($style_file) : time();
+    }
+    echo "\n<!-- [VINFAST THEME VERSION: " . esc_attr($ver) . " - DEPLOYED AT: " . esc_attr(date('Y-m-d H:i:s', (int)$ver)) . "] -->\n";
+}, 1);
+
 // 1. ENQUEUE STYLES & SCRIPTS
 // ============================================================
 add_action('wp_enqueue_scripts', 'vfvp_enqueue_assets');
