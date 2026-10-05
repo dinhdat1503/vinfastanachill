@@ -2989,6 +2989,21 @@ add_action('init', function() {
         }
     } else {
         update_post_meta($deposit_page->ID, '_wp_page_template', 'page-dat-coc.php');
+    // Đảm bảo trang phu-kien tồn tại
+    $phu_kien_page = get_page_by_path('phu-kien');
+    if (!$phu_kien_page) {
+        $p_id = wp_insert_post([
+            'post_title'     => 'Phụ Kiện Xe VinFast Chính Hãng',
+            'post_name'      => 'phu-kien',
+            'post_status'    => 'publish',
+            'post_type'      => 'page',
+            'comment_status' => 'closed',
+        ]);
+        if ($p_id) {
+            update_post_meta($p_id, '_wp_page_template', 'page-phu-kien.php');
+        }
+    } else {
+        update_post_meta($phu_kien_page->ID, '_wp_page_template', 'page-phu-kien.php');
     }
 
     set_transient('vfvp_deposit_page_created_v2', 1, DAY_IN_SECONDS);

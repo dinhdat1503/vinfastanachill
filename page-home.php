@@ -442,9 +442,8 @@ $xe_dich_vu = get_posts([
 </section>
 
 <!-- ============================
-     [TẠM ẨN TRANG CHỦ] PHỤ KIỆN XE VINFAST CHÍNH HÃNG - Mở lại khi cần
+     PHỤ KIỆN XE VINFAST CHÍNH HÃNG
      ============================ -->
-<?php /*
 <?php
 $accessories = vfvp_get_accessories();
 if (!empty($accessories)):
@@ -487,7 +486,6 @@ if (!empty($accessories)):
   </div>
 </section>
 <?php endif; ?>
-*/ ?>
 
 <!-- ============================
      PIN & TRẠM SẠC Ô TÔ ĐIỆN
