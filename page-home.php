@@ -1444,7 +1444,54 @@ $camp_desc  = !empty($camp_posts) ? esc_html(get_the_excerpt($camp_posts[0]->ID)
     </div>
 
     <!-- HANDOVER CARDS -->
+    <?php
+    $handover_posts = get_posts([
+        'post_type'      => 'post',
+        'category_name'  => 'ban-giao-xe',
+        'posts_per_page' => 4,
+        'post_status'    => 'publish'
+    ]);
+    ?>
     <div class="vf-handover-grid">
+      <?php if (!empty($handover_posts)): ?>
+        <?php foreach ($handover_posts as $hp):
+          $hp_thumb = get_the_post_thumbnail_url($hp->ID, 'large');
+          if (!$hp_thumb) {
+              $hp_thumb = content_url('/uploads/official_cars/common/official_vf3.webp');
+          }
+          $customer_quote = get_the_excerpt($hp->ID);
+          if (empty($customer_quote)) {
+              $customer_quote = wp_trim_words($hp->post_content, 22, '...');
+          }
+        ?>
+        <div class="vf-handover-card">
+          <a href="<?php echo esc_url(get_permalink($hp->ID)); ?>" class="vf-handover-car-preview" style="text-decoration:none; display:flex; padding:0; overflow:hidden;">
+            <span class="vf-handover-badge">Bàn giao xe</span>
+            <img src="<?php echo esc_url($hp_thumb); ?>" alt="<?php echo esc_attr($hp->post_title); ?>" loading="lazy" style="max-height:100%; width:100%; height:100%; object-fit:cover;">
+          </a>
+          <div class="vf-handover-body">
+            <div class="vf-handover-customer">
+              <div class="vf-handover-avatar">VF</div>
+              <div>
+                <div class="vf-handover-cname">
+                  <a href="<?php echo esc_url(get_permalink($hp->ID)); ?>" style="color:inherit; text-decoration:none;">
+                    <?php echo esc_html(wp_trim_words($hp->post_title, 6)); ?>
+                  </a>
+                </div>
+                <div class="vf-handover-loc"><?php echo get_the_date('d/m/Y', $hp->ID); ?> • Tân Á Châu</div>
+              </div>
+            </div>
+            <p class="vf-handover-quote">
+              "<?php echo esc_html($customer_quote); ?>"
+            </p>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto;">
+              <div class="vf-handover-stars">★★★★★</div>
+              <a href="<?php echo esc_url(get_permalink($hp->ID)); ?>" style="color:#60A5FA; font-size:12px; font-weight:700; text-decoration:none;">Xem bài viết →</a>
+            </div>
+          </div>
+        </div>
+        <?php endforeach; ?>
+      <?php else: ?>
       <!-- 1: VF 3 -->
       <div class="vf-handover-card">
         <div class="vf-handover-car-preview">
@@ -1528,6 +1575,7 @@ $camp_desc  = !empty($camp_posts) ? esc_html(get_the_excerpt($camp_posts[0]->ID)
           <div class="vf-handover-stars">★★★★★</div>
         </div>
       </div>
+      <?php endif; ?>
     </div>
 
     <!-- BOTTOM ACTION BAR -->

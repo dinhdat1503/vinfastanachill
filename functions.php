@@ -901,6 +901,9 @@ function vfvp_create_default_terms() {
     if (!term_exists('Xe dịch vụ', 'car_category')) {
         wp_insert_term('Xe dịch vụ', 'car_category', ['slug' => 'xe-dich-vu']);
     }
+    if (!term_exists('Bàn giao xe', 'category')) {
+        wp_insert_term('Bàn giao xe', 'category', ['slug' => 'ban-giao-xe']);
+    }
 }
 
 // Flush rewrite rules khi activate
