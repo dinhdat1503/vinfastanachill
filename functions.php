@@ -2969,7 +2969,7 @@ add_action('init', function() {
 // 🚗 AUTO CREATE PAGE ĐẶT CỌC XE & XỬ LÝ FORM ĐẶT CỌC
 // ============================================================
 add_action('init', function() {
-    if (get_transient('vfvp_deposit_page_created_v2')) return;
+    if (get_transient('vfvp_deposit_page_created_v3')) return;
 
     $deposit_page = get_page_by_path('dat-coc-xe');
     if (!$deposit_page) {
@@ -3008,7 +3008,7 @@ add_action('init', function() {
         update_post_meta($phu_kien_page->ID, '_wp_page_template', 'page-phu-kien.php');
     }
 
-    set_transient('vfvp_deposit_page_created_v2', 1, DAY_IN_SECONDS);
+    set_transient('vfvp_deposit_page_created_v3', 1, DAY_IN_SECONDS);
 });
 
 // Xử lý AJAX Form Đặt Cọc Xe
