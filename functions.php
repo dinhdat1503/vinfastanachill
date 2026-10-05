@@ -176,6 +176,32 @@ function vfvp_enqueue_assets() {
 }
 
 // ============================================================
+// 🎯 FORCE CACHE-BUSTING CHO FLATSOME STYLE & MAIN JS
+// Đảm bảo mọi handle tải style.css đều tự đổi version sang timestamp file
+// ============================================================
+add_filter('style_loader_src', function($src, $handle) {
+    if (strpos($src, 'style.css') !== false || $handle === 'flatsome-style' || $handle === 'flatsome-child') {
+        $style_file = get_stylesheet_directory() . '/style.css';
+        if (file_exists($style_file)) {
+            $src = remove_query_arg('ver', $src);
+            $src = add_query_arg('ver', filemtime($style_file), $src);
+        }
+    }
+    return $src;
+}, 9999, 2);
+
+add_filter('script_loader_src', function($src, $handle) {
+    if (strpos($src, 'assets/js/main.js') !== false || $handle === 'vfvp-main') {
+        $js_file = get_stylesheet_directory() . '/assets/js/main.js';
+        if (file_exists($js_file)) {
+            $src = remove_query_arg('ver', $src);
+            $src = add_query_arg('ver', filemtime($js_file), $src);
+        }
+    }
+    return $src;
+}, 9999, 2);
+
+// ============================================================
 // 1A2. ENSURE SERVICE BANNER ASSETS
 // ============================================================
 function vfvp_remove_white_bg_php($src, $dst) {
