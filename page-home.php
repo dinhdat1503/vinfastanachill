@@ -55,7 +55,7 @@ $xe_dich_vu = get_posts([
             <h2 class="vf-slide-title">Mãnh Liệt<br>Vì Tương Lai Xanh</h2>
             <p class="vf-slide-sub">Đại lý VinFast chính hãng Tân Á Châu — Tư vấn tận tâm, Ưu đãi tốt nhất</p>
             <div class="vf-slide-btns">
-              <a href="<?php echo home_url('/#xe-ca-nhan'); ?>" class="vf-btn vf-btn-primary">
+              <a href="<?php echo home_url('/#dong-xe-dien'); ?>" class="vf-btn vf-btn-primary">
                 XEM DÒNG XE ĐIỆN
               </a>
               <a href="<?php echo esc_url(home_url('/dang-ky-lai-thu/')); ?>" class="vf-btn vf-btn-outline">
@@ -80,7 +80,7 @@ $xe_dich_vu = get_posts([
             <h2 class="vf-slide-title">Tặng Voucher<br>Tới 80 Triệu Đồng*</h2>
             <p class="vf-slide-sub">Hỗ trợ chuyển đổi từ xe xăng sang ô tô điện VinFast chính hãng</p>
             <div class="vf-slide-btns">
-              <a href="<?php echo esc_url(home_url('/yeu-cau-bao-gia/')); ?>" class="vf-btn vf-btn-primary">NHẬN BÁO GIÁ</a>
+              <a href="<?php echo esc_url(home_url('/dat-coc-xe/')); ?>" class="vf-btn vf-btn-primary">ĐẶT CỌC ONLINE</a>
               <a href="<?php echo esc_url(home_url('/dang-ky-lai-thu/')); ?>" class="vf-btn vf-btn-outline" style="color:#fff; border-color:#fff;">ĐĂNG KÝ LÁI THỬ</a>
             </div>
           </div>
@@ -385,8 +385,8 @@ $xe_dich_vu = get_posts([
 
           <!-- 2 NÚT THAO TÁC: ĐẶT CỌC & XEM CHI TIẾT -->
           <div class="vf-showcase-actions">
-            <a href="<?php echo esc_url(home_url('/yeu-cau-bao-gia/')); ?>" class="vf-btn vf-btn-primary">
-              NHẬN BÁO GIÁ
+            <a href="<?php echo esc_url(home_url('/dat-coc-xe/?car=' . $car['slug'])); ?>" class="vf-btn vf-btn-primary">
+              ĐẶT CỌC NGAY
             </a>
             <a href="<?php echo esc_url($car['link']); ?>" class="vf-btn vf-btn-outline vf-sc-btn-detail">
               XEM CHI TIẾT
@@ -409,6 +409,35 @@ $xe_dich_vu = get_posts([
       (*) Mức giá ưu đãi mang tính chất tham khảo. Chương trình áp dụng theo điều khoản & điều kiện.
     </div>
 
+  </div>
+</section>
+
+<!-- ============================
+     BANNER KÊU GỌI ĐẶT CỌC XE TRỰC TUYẾN
+     ============================ -->
+<section class="vf-deposit-strip" style="background: linear-gradient(135deg, #060B1A 0%, #102A71 60%, #1E40AF 100%); color: #ffffff; padding: 46px 20px; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);">
+  <div class="container" style="position: relative; z-index: 2;">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+      <div style="max-width: 680px;">
+        <span style="display: inline-block; background: rgba(255,255,255,0.14); color: #93C5FD; font-size: 11.5px; font-weight: 800; padding: 4px 14px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.2);">
+          ⚡ CHÍNH SÁCH ĐẶT CỌC TRỰC TUYẾN CHÍNH HÃNG
+        </span>
+        <h3 style="font-size: clamp(1.35rem, 2.6vw, 1.85rem); font-weight: 900; color: #ffffff; margin: 0 0 8px 0; text-transform: uppercase;">
+          Đặt cọc online — Giữ trọn ưu đãi & Giao xe sớm nhất
+        </h3>
+        <p style="font-size: 13.5px; color: #CBD5E1; margin: 0; line-height: 1.55;">
+          Bảo toàn toàn bộ quà tặng voucher tháng, ưu đãi lệ phí trước bạ và thanh toán an toàn 100% qua mã VietQR đại lý ủy quyền VinFast Tân Á Châu.
+        </p>
+      </div>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="<?php echo esc_url(home_url('/dat-coc-xe/')); ?>" class="vf-btn vf-btn-primary" style="background: linear-gradient(135deg, #2563EB, #1D4ED8); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); white-space: nowrap; height: 48px; line-height: 48px; padding: 0 28px; font-weight: 800; font-size: 13.5px; border-radius: 10px; text-decoration: none;">
+          ✓ ĐẶT CỌC XE NGAY
+        </a>
+        <a href="<?php echo esc_url(home_url('/dang-ky-lai-thu/')); ?>" class="vf-btn vf-btn-outline" style="color: #ffffff; border-color: rgba(255,255,255,0.5); white-space: nowrap; height: 48px; line-height: 48px; padding: 0 24px; font-weight: 700; font-size: 13.5px; border-radius: 10px; text-decoration: none;">
+          ĐĂNG KÝ LÁI THỬ
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -644,48 +673,78 @@ $camp_desc  = !empty($camp_posts) ? esc_html(get_the_excerpt($camp_posts[0]->ID)
 
 
 <!-- ============================
-     [TẠM ẨN TRANG CHỦ] CÔNG CỤ TÀI CHÍNH - Mở lại khi cần
+     CÔNG CỤ HỖ TRỢ MUA XE & ĐẶT CỌC
      ============================ -->
-<?php /*
-<section class="vf-section">
+<section class="vf-finance-section" id="cong-cu-mua-xe" style="padding: 70px 0; background: #F8FAFC; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
   <div class="container">
-    <div class="vf-text-center" style="margin-bottom:48px;">
-      <div class="vf-section-label">Lập kế hoạch tài chính</div>
-      <h2 class="vf-section-title">Công cụ hỗ trợ mua xe</h2>
+    <div style="text-align: center; margin-bottom: 44px;">
+      <span style="display:inline-block; background:#EFF6FF; color:#2563EB; font-size:12px; font-weight:800; padding:5px 16px; border-radius:20px; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px; border:1px solid #BFDBFE;">LẬP KẾ HOẠCH TÀI CHÍNH</span>
+      <h2 style="font-size:clamp(1.7rem, 3.2vw, 2.3rem); font-weight:900; color:#0F172A; margin:0 0 12px 0; text-transform:uppercase; letter-spacing:-0.4px;">Công cụ hỗ trợ sở hữu xe</h2>
+      <p style="color:#64748B; font-size:14.5px; max-width:620px; margin:0 auto; line-height:1.6;">Dễ dàng ước tính toàn bộ chi phí lăn bánh chính xác, bảng tính trả góp linh hoạt và thủ tục đặt cọc trực tuyến bảo toàn quà tặng ưu đãi.</p>
     </div>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
-      <a href="<?php echo home_url('/du-toan-chi-phi/'); ?>"
-         style="background:linear-gradient(135deg,var(--vf-blue),var(--vf-blue-dark)); border-radius:16px; padding:40px; text-decoration:none; display:block; color:#fff; transition:transform 0.3s, box-shadow 0.3s;"
-         onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 48px rgba(37,99,235,0.4)'"
-         onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <div style="font-size:3rem; margin-bottom:20px;">📊</div>
-        <h3 style="font-size:1.3rem; font-weight:800; margin-bottom:12px; color:#fff;">Dự toán chi phí lăn bánh</h3>
-        <p style="font-size:14px; color:rgba(255,255,255,0.8); line-height:1.6; margin-bottom:20px;">
-          Tính toán tổng chi phí sở hữu xe: giá xe, trước bạ, đăng ký, bảo hiểm + các ưu đãi hiện có.
+    <div class="vf-finance-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap:24px;">
+      
+      <!-- Thẻ 1: Dự toán chi phí lăn bánh -->
+      <a href="<?php echo esc_url(home_url('/du-toan-chi-phi/')); ?>" 
+         class="vf-fin-card" 
+         style="background: linear-gradient(135deg, #1E40AF 0%, #2563EB 100%); border-radius: 18px; padding: 34px 28px; text-decoration: none; display: flex; flex-direction: column; color: #ffffff; box-shadow: 0 10px 28px rgba(37, 99, 235, 0.22); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(255, 255, 255, 0.15); position: relative; overflow: hidden;"
+         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 18px 40px rgba(37, 99, 235, 0.38)';"
+         onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 10px 28px rgba(37, 99, 235, 0.22)';">
+        <div style="width: 56px; height: 56px; border-radius: 14px; background: rgba(255, 255, 255, 0.16); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 20px;">
+          📊
+        </div>
+        <span style="font-size: 11.5px; font-weight: 800; color: #93C5FD; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">ƯỚC TÍNH CHI PHÍ</span>
+        <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0 0 12px 0; color: #ffffff;">Dự toán chi phí lăn bánh</h3>
+        <p style="font-size: 13.5px; color: rgba(255, 255, 255, 0.85); line-height: 1.6; margin: 0 0 24px 0; flex: 1;">
+          Tính toán tổng chi phí sở hữu xe chi tiết theo từng tỉnh thành: miễn 100% lệ phí trước bạ, phí đăng ký biển số, bảo hiểm bắt buộc & quà tặng voucher tháng.
         </p>
-        <span style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">
-          Tính ngay →
+        <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: #ffffff; background: rgba(255, 255, 255, 0.2); padding: 10px 18px; border-radius: 8px; width: fit-content;">
+          TÍNH GIÁ LĂN BÁNH →
         </span>
       </a>
 
-      <a href="<?php echo home_url('/mua-xe-tra-gop/'); ?>"
-         style="background:linear-gradient(135deg,#1a1f2e,#2d3748); border-radius:16px; padding:40px; text-decoration:none; display:block; color:#fff; transition:transform 0.3s, box-shadow 0.3s;"
-         onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 48px rgba(0,0,0,0.3)'"
-         onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <div style="font-size:3rem; margin-bottom:20px;">💳</div>
-        <h3 style="font-size:1.3rem; font-weight:800; margin-bottom:12px; color:#fff;">Dự toán vay trả góp</h3>
-        <p style="font-size:14px; color:rgba(255,255,255,0.8); line-height:1.6; margin-bottom:20px;">
-          Tính toán khoản trả góp hàng tháng theo phương pháp dư nợ giảm dần. Kết quả chi tiết theo từng tháng.
+      <!-- Thẻ 2: Bảng tính vay trả góp -->
+      <a href="<?php echo esc_url(home_url('/mua-xe-tra-gop/')); ?>" 
+         class="vf-fin-card" 
+         style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-radius: 18px; padding: 34px 28px; text-decoration: none; display: flex; flex-direction: column; color: #ffffff; box-shadow: 0 10px 28px rgba(15, 23, 42, 0.2); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(255, 255, 255, 0.12); position: relative; overflow: hidden;"
+         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 18px 40px rgba(15, 23, 42, 0.35)';"
+         onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 10px 28px rgba(15, 23, 42, 0.2)';">
+        <div style="width: 56px; height: 56px; border-radius: 14px; background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 20px;">
+          💳
+        </div>
+        <span style="font-size: 11.5px; font-weight: 800; color: #60A5FA; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">HỖ TRỢ TÀI CHÍNH</span>
+        <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0 0 12px 0; color: #ffffff;">Dự toán vay trả góp 80%</h3>
+        <p style="font-size: 13.5px; color: rgba(255, 255, 255, 0.85); line-height: 1.6; margin: 0 0 24px 0; flex: 1;">
+          Ước tính số tiền trả trước từ 20% và số tiền góp hàng tháng theo phương thức dư nợ giảm dần. Liên kết 10+ ngân hàng lớn, duyệt hồ sơ nhanh trong 24h.
         </p>
-        <span style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">
-          Tính ngay →
+        <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: #ffffff; background: rgba(255, 255, 255, 0.18); padding: 10px 18px; border-radius: 8px; width: fit-content;">
+          TÍNH GÓI TRẢ GÓP →
         </span>
       </a>
+
+      <!-- Thẻ 3: Đặt cọc trực tuyến giữ ưu đãi -->
+      <a href="<?php echo esc_url(home_url('/dat-coc-xe/')); ?>" 
+         class="vf-fin-card" 
+         style="background: linear-gradient(135deg, #064E3B 0%, #059669 100%); border-radius: 18px; padding: 34px 28px; text-decoration: none; display: flex; flex-direction: column; color: #ffffff; box-shadow: 0 10px 28px rgba(5, 150, 105, 0.22); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(255, 255, 255, 0.15); position: relative; overflow: hidden;"
+         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 18px 40px rgba(5, 150, 105, 0.38)';"
+         onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 10px 28px rgba(5, 150, 105, 0.22)';">
+        <div style="width: 56px; height: 56px; border-radius: 14px; background: rgba(255, 255, 255, 0.18); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 20px;">
+          ⚡
+        </div>
+        <span style="font-size: 11.5px; font-weight: 800; color: #A7F3D0; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">ĐẶT CỌC CHÍNH HÃNG</span>
+        <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0 0 12px 0; color: #ffffff;">Đặt cọc xe trực tuyến</h3>
+        <p style="font-size: 13.5px; color: rgba(255, 255, 255, 0.85); line-height: 1.6; margin: 0 0 24px 0; flex: 1;">
+          Ưu tiên xếp lịch nhận xe sớm nhất, bảo toàn 100% quà tặng ưu đãi trong tháng. Hỗ trợ quét mã VietQR tự động chính chủ VinFast Tân Á Châu.
+        </p>
+        <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: #ffffff; background: rgba(255, 255, 255, 0.22); padding: 10px 18px; border-radius: 8px; width: fit-content;">
+          ĐẶT CỌC NGAY →
+        </span>
+      </a>
+
     </div>
   </div>
 </section>
-*/ ?>
 
 <!-- ============================
      TIN TỨC & SỰ KIỆN VINFAST
