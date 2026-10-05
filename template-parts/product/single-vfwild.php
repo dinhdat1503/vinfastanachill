@@ -42,7 +42,7 @@ $common_url  = content_url('/uploads/official_cars/common');
     background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid #E2E8F0;
-    z-index: 999;
+    z-index: 9999999 !important; background: #ffffff !important;
     display: flex; align-items: center;
     transform: translateY(-100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -671,9 +671,21 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.scrollY > 100) {
       subnav.classList.add('active');
       document.body.classList.add('vf-hide-main-header');
+      var _hdr = document.getElementById('header');
+      var _hdrW = document.querySelector('.header-wrapper');
+      var _hdrM = document.querySelector('.header-main');
+      if (_hdr) _hdr.style.setProperty('display', 'none', 'important');
+      if (_hdrW) _hdrW.style.setProperty('display', 'none', 'important');
+      if (_hdrM) _hdrM.style.setProperty('display', 'none', 'important');
     } else {
       subnav.classList.remove('active');
       document.body.classList.remove('vf-hide-main-header');
+      var _hdr = document.getElementById('header');
+      var _hdrW = document.querySelector('.header-wrapper');
+      var _hdrM = document.querySelector('.header-main');
+      if (_hdr) _hdr.style.removeProperty('display');
+      if (_hdrW) _hdrW.style.removeProperty('display');
+      if (_hdrM) _hdrM.style.removeProperty('display');
     }
   });
 

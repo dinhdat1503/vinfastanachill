@@ -11963,21 +11963,20 @@ body.single-product #header,
 body.single-product .header-wrapper,
 body.single-product .sticky-wrapper,
 body.single-product #masthead,
+body.single-product .header-main,
+body.single-product .stuck,
 body.single-car_model #header,
 body.single-car_model .header-wrapper,
 body.single-car_model .sticky-wrapper,
-body.single-car_model #masthead {
-  position: relative !important;
-  top: auto !important;
-  transform: none !important;
-  box-shadow: none !important;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s ease !important;
-}
-
-body.single-product .stuck,
+body.single-car_model #masthead,
+body.single-car_model .header-main,
 body.single-car_model .stuck {
   position: relative !important;
   top: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
   box-shadow: none !important;
 }
 
@@ -11985,13 +11984,19 @@ body.single-car_model .stuck {
 body.vf-hide-main-header #header,
 body.vf-hide-main-header .header-wrapper,
 body.vf-hide-main-header #masthead,
+body.vf-hide-main-header .header-main,
 body.vf-hide-main-header .sticky-wrapper,
-#header.vf-header-hidden,
-.header-wrapper.vf-header-hidden {
-  transform: translateY(-100%) !important;
+body.vf-hide-main-header .stuck,
+body.single-product #header.vf-header-hidden,
+body.single-product .header-wrapper.vf-header-hidden,
+body.single-product .header-main.vf-header-hidden {
+  display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
   pointer-events: none !important;
+  transform: translateY(-200%) !important;
 }
 
 body.single-car_model #main,

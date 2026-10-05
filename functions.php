@@ -190,6 +190,24 @@ add_filter('style_loader_src', function($src, $handle) {
     return $src;
 }, 9999, 2);
 
+// ============================================================
+// 🚫 TẮT TÍNH NĂNG STICKY CỦA FLATSOME TRÊN TRANG SẢN PHẨM / XE
+// Tránh việc Flatsome tự gắn fixed/stuck đè lên subnav của xe
+// ============================================================
+add_filter('theme_mod_header_sticky', function($value) {
+    if (is_singular('product') || is_singular('car_model')) {
+        return 0;
+    }
+    return $value;
+}, 9999);
+
+add_filter('theme_mod_header_sticky_style', function($value) {
+    if (is_singular('product') || is_singular('car_model')) {
+        return '';
+    }
+    return $value;
+}, 9999);
+
 add_filter('script_loader_src', function($src, $handle) {
     if (strpos($src, 'assets/js/main.js') !== false || $handle === 'vfvp-main') {
         $js_file = get_stylesheet_directory() . '/assets/js/main.js';

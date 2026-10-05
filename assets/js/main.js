@@ -182,20 +182,46 @@
 
     var header = document.getElementById('header');
     var headerWrapper = document.querySelector('.header-wrapper');
+    var headerMain = document.querySelector('.header-main');
+
+    // Tháo bỏ các class sticky của Flatsome trên trang sản phẩm
+    if (header) {
+      header.classList.remove('has-sticky', 'sticky-jump', 'header-sticky');
+    }
 
     function handleScroll() {
       if (window.scrollY > 100) {
         document.body.classList.add('vf-hide-main-header');
-        if (header) header.classList.add('vf-header-hidden');
-        if (headerWrapper) headerWrapper.classList.add('vf-header-hidden');
+        if (header) {
+          header.classList.add('vf-header-hidden');
+          header.style.setProperty('display', 'none', 'important');
+        }
+        if (headerWrapper) {
+          headerWrapper.classList.add('vf-header-hidden');
+          headerWrapper.style.setProperty('display', 'none', 'important');
+        }
+        if (headerMain) {
+          headerMain.classList.add('vf-header-hidden');
+          headerMain.style.setProperty('display', 'none', 'important');
+        }
         subnavs.forEach(function(s) {
           s.classList.add('active');
           s.classList.add('subnav-visible');
         });
       } else {
         document.body.classList.remove('vf-hide-main-header');
-        if (header) header.classList.remove('vf-header-hidden');
-        if (headerWrapper) headerWrapper.classList.remove('vf-header-hidden');
+        if (header) {
+          header.classList.remove('vf-header-hidden');
+          header.style.removeProperty('display');
+        }
+        if (headerWrapper) {
+          headerWrapper.classList.remove('vf-header-hidden');
+          headerWrapper.style.removeProperty('display');
+        }
+        if (headerMain) {
+          headerMain.classList.remove('vf-header-hidden');
+          headerMain.style.removeProperty('display');
+        }
         subnavs.forEach(function(s) {
           s.classList.remove('active');
           s.classList.remove('subnav-visible');
