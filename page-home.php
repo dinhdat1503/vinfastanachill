@@ -413,6 +413,343 @@ $xe_dich_vu = get_posts([
 </section>
 
 <!-- ============================
+     ƯU ĐÃI & CHÍNH SÁCH ĐẶC QUYỀN THÁNG
+     ============================ -->
+<section class="vf-promo-section" id="uu-dai-thang" style="padding: 60px 0 20px; background: #FFFFFF;">
+  <style>
+    .vf-promo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-bottom: 32px;
+    }
+    .vf-promo-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 26px 22px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
+    }
+    .vf-promo-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--card-accent, #2563EB);
+      transition: height 0.3s ease;
+    }
+    .vf-promo-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+      border-color: #CBD5E1;
+    }
+    .vf-promo-card:hover::before {
+      height: 6px;
+    }
+    .vf-promo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      width: fit-content;
+      margin-bottom: 16px;
+    }
+    .vf-promo-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .vf-promo-icon-box svg {
+      width: 24px;
+      height: 24px;
+    }
+    .vf-promo-card-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #0F172A;
+      margin: 0 0 10px;
+      line-height: 1.35;
+    }
+    .vf-promo-card-desc {
+      font-size: 13.5px;
+      color: #64748B;
+      line-height: 1.6;
+      margin: 0 0 18px;
+      flex: 1;
+    }
+    .vf-promo-card-perks {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .vf-promo-card-perks li {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #1E293B;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .vf-promo-card-perks li svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+    }
+    .vf-promo-card-action {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px dashed #E2E8F0;
+    }
+    .vf-promo-card-action a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      color: #2563EB;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .vf-promo-card-action a:hover {
+      color: #1D4ED8;
+      transform: translateX(3px);
+    }
+
+    /* MINI CTA BAR BELOW CARDS */
+    .vf-promo-cta-bar {
+      background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+      border: 1px solid #BFDBFE;
+      border-radius: 14px;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .vf-promo-cta-text {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #1E293B;
+      font-size: 14.5px;
+      font-weight: 600;
+    }
+    .vf-promo-cta-text strong {
+      color: #0F172A;
+      font-weight: 800;
+    }
+    .vf-promo-cta-btns {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1080px) {
+      .vf-promo-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .vf-promo-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .vf-promo-cta-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px;
+      }
+      .vf-promo-cta-btns {
+        width: 100%;
+      }
+      .vf-promo-cta-btns .vf-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  </style>
+
+  <div class="container">
+    <div class="vf-promo-header" style="text-align: center; max-width: 780px; margin: 0 auto 40px;">
+      <span style="display:inline-flex; align-items:center; gap:8px; background:#FEF2F2; color:#DC2626; font-size:12px; font-weight:800; padding:6px 18px; border-radius:30px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:14px; border:1px solid #FECACA;">
+        <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#DC2626;"></span>
+        CHÍNH SÁCH BÁN HÀNG ĐẶC BIỆT THÁNG <?php echo date('m/Y'); ?>
+      </span>
+      <h2 style="font-size:clamp(1.8rem, 3.2vw, 2.4rem); font-weight:900; color:#0F172A; margin:0 0 12px 0; text-transform:uppercase; letter-spacing:-0.5px; line-height:1.25;">
+        Ưu Đãi & Đặc Quyền Tháng Này
+      </h2>
+      <p style="color:#64748B; font-size:15px; margin:0 auto; line-height:1.6; max-width:620px;">
+        Chính sách trợ giá và quà tặng tốt nhất từ VinFast Tân Á Châu giúp quý khách dễ dàng sở hữu ô tô điện thông minh với chi phí tối ưu nhất.
+      </p>
+    </div>
+
+    <div class="vf-promo-grid">
+      <!-- Card 1: Miễn phí sạc pin V-GREEN -->
+      <div class="vf-promo-card" style="--card-accent: #059669;">
+        <div class="vf-promo-badge" style="background:#ECFDF5; color:#059669; border:1px solid #A7F3D0;">
+          ⚡ TIẾT KIỆM TỐI ĐA
+        </div>
+        <div class="vf-promo-icon-box" style="background:#ECFDF5; color:#059669;">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3 class="vf-promo-card-title">Miễn Phí Sạc Pin V-GREEN</h3>
+        <p class="vf-promo-card-desc">
+          Miễn phí sạc pin tại mạng lưới trạm sạc công cộng V-GREEN toàn quốc tới 2 năm. Tiết kiệm hàng chục triệu chi phí vận hành hàng tháng.
+        </p>
+        <ul class="vf-promo-card-perks">
+          <li>
+            <svg fill="#059669" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            0đ chi phí nhiên liệu mỗi tháng
+          </li>
+          <li>
+            <svg fill="#059669" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Hệ thống sạc phủ sóng 63 tỉnh thành
+          </li>
+        </ul>
+        <div class="vf-promo-card-action">
+          <a href="<?php echo esc_url(home_url('/dich-vu-pin-oto-dien/')); ?>">
+            <span>Tìm hiểu trạm sạc V-GREEN</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: Hỗ trợ chuyển đổi xanh tới 80 triệu -->
+      <div class="vf-promo-card" style="--card-accent: #DC2626;">
+        <div class="vf-promo-badge" style="background:#FEF2F2; color:#DC2626; border:1px solid #FECACA;">
+          🎁 ƯU ĐÃI KHỦNG
+        </div>
+        <div class="vf-promo-icon-box" style="background:#FEF2F2; color:#DC2626;">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="vf-promo-card-title">Chuyển Đổi Xanh Tới 80 Triệu</h3>
+        <p class="vf-promo-card-desc">
+          Chiến dịch "Mãnh liệt Tinh thần Việt Nam": Hỗ trợ thu mua xe xăng cũ đổi sang xe điện VinFast, trừ trực tiếp hoặc tặng voucher tới 80 triệu đồng.
+        </p>
+        <ul class="vf-promo-card-perks">
+          <li>
+            <svg fill="#DC2626" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Thu cũ xe xăng mọi hãng giá tốt
+          </li>
+          <li>
+            <svg fill="#DC2626" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Trừ thẳng vào giá thanh toán xe
+          </li>
+        </ul>
+        <div class="vf-promo-card-action">
+          <a href="<?php echo esc_url(home_url('/dat-coc-xe/')); ?>">
+            <span>Áp dụng ưu đãi ngay</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3: Gói vay trả góp 5% -->
+      <div class="vf-promo-card" style="--card-accent: #2563EB;">
+        <div class="vf-promo-badge" style="background:#EFF6FF; color:#2563EB; border:1px solid #BFDBFE;">
+          🏦 TÀI CHÍNH DỄ DÀNG
+        </div>
+        <div class="vf-promo-icon-box" style="background:#EFF6FF; color:#2563EB;">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+        </div>
+        <h3 class="vf-promo-card-title">Vay 80% — Lãi Suất Cố Định</h3>
+        <p class="vf-promo-card-desc">
+          Gói vay ngân hàng ưu đãi lãi suất cố định chỉ từ 5%/năm. Hỗ trợ vay tối đa 80% giá trị xe, thời gian vay linh hoạt lên tới 8 năm, duyệt hồ sơ 24h.
+        </p>
+        <ul class="vf-promo-card-perks">
+          <li>
+            <svg fill="#2563EB" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Trả góp chỉ từ 3 – 5 triệu/tháng
+          </li>
+          <li>
+            <svg fill="#2563EB" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Duyệt online, không giữ giấy tờ gốc
+          </li>
+        </ul>
+        <div class="vf-promo-card-action">
+          <a href="<?php echo esc_url(home_url('/mua-xe-tra-gop/')); ?>">
+            <span>Tính bảng trả góp chi tiết</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 4: Bảo hành 10 năm & Phụ kiện -->
+      <div class="vf-promo-card" style="--card-accent: #7C3AED;">
+        <div class="vf-promo-badge" style="background:#F5F3FF; color:#7C3AED; border:1px solid #DDD6FE;">
+          🛡️ AN TÂM TUYỆT ĐỐI
+        </div>
+        <div class="vf-promo-icon-box" style="background:#F5F3FF; color:#7C3AED;">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3 class="vf-promo-card-title">Bảo Hành 10 Năm & Quà Tặng</h3>
+        <p class="vf-promo-card-desc">
+          Cam kết bảo hành chính hãng lên đến 10 năm hoặc 200.000 km cùng dịch vụ cứu hộ 24/7. Tặng kèm gói phụ kiện cao cấp khi nhận xe tại Tân Á Châu.
+        </p>
+        <ul class="vf-promo-card-perks">
+          <li>
+            <svg fill="#7C3AED" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Bảo hành pin & thân vỏ dài nhất
+          </li>
+          <li>
+            <svg fill="#7C3AED" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Tặng combo thảm sàn & film cách nhiệt
+          </li>
+        </ul>
+        <div class="vf-promo-card-action">
+          <a href="<?php echo esc_url(home_url('/chinh-sach-bao-hanh/')); ?>">
+            <span>Xem chính sách bảo hành</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- INLINE CTA BAR -->
+    <div class="vf-promo-cta-bar">
+      <div class="vf-promo-cta-text">
+        <span style="font-size:24px;">💡</span>
+        <div>
+          <strong>Bạn cần bảng tính chi phí lăn bánh chính xác và tư vấn phiên bản phù hợp?</strong>
+          <div style="font-size:13px; color:#64748B; margin-top:2px;">Chuyên viên tư vấn VinFast Tân Á Châu sẽ gửi bảng chiết tính chi tiết chỉ sau 5 phút.</div>
+        </div>
+      </div>
+      <div class="vf-promo-cta-btns">
+        <a href="<?php echo esc_url(home_url('/du-toan-chi-phi/')); ?>" class="vf-btn vf-btn-primary" style="padding:10px 22px; font-size:13px;">
+          TÍNH GIÁ LĂN BÁNH →
+        </a>
+        <a href="tel:0562256256" class="vf-btn vf-btn-outline" style="padding:10px 20px; font-size:13px; background:#fff;">
+          📞 056 225 6256
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================
      BANNER KÊU GỌI ĐẶT CỌC XE TRỰC TUYẾN (DẠNG CARD GỌN GÀNG)
      ============================ -->
 <section class="vf-deposit-card-section" style="padding: 16px 0 32px 0; background: transparent;">
@@ -779,6 +1116,435 @@ $camp_desc  = !empty($camp_posts) ? esc_html(get_the_excerpt($camp_posts[0]->ID)
       </a>
 
     </div>
+  </div>
+</section>
+
+<!-- ============================
+     TẠI SAO CHỌN VINFAST TÂN Á CHÂU & KHOẢNH KHẮC BÀN GIAO XE
+     ============================ -->
+<section class="vf-why-section" id="tai-sao-chon-tan-a-chau" style="padding: 70px 0; background: #0B132B; color: #FFFFFF; position: relative; overflow: hidden;">
+  <style>
+    .vf-why-section::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .vf-why-section::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(220, 38, 38, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .vf-why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 50px;
+      position: relative;
+      z-index: 2;
+    }
+    .vf-why-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 30px 24px;
+      transition: all 0.35s ease;
+      backdrop-filter: blur(10px);
+    }
+    .vf-why-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(37, 99, 235, 0.5);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+    }
+    .vf-why-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(37, 99, 235, 0.05) 100%);
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #60A5FA;
+    }
+    .vf-why-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin: 0 0 12px;
+      line-height: 1.35;
+    }
+    .vf-why-desc {
+      font-size: 13.5px;
+      color: #94A3B8;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* STATS STRIP */
+    .vf-why-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin-bottom: 64px;
+      position: relative;
+      z-index: 2;
+    }
+    .vf-stat-item {
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0 12px;
+    }
+    .vf-stat-item:last-child {
+      border-right: none;
+    }
+    .vf-stat-num {
+      font-size: clamp(2rem, 3.5vw, 2.5rem);
+      font-weight: 900;
+      color: #60A5FA;
+      line-height: 1;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+    .vf-stat-label {
+      font-size: 13px;
+      color: #94A3B8;
+      font-weight: 600;
+    }
+
+    /* HANDOVER SHOWCASE GRID */
+    .vf-handover-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      position: relative;
+      z-index: 2;
+    }
+    .vf-handover-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+    .vf-handover-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(37, 99, 235, 0.4);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+    }
+    .vf-handover-car-preview {
+      height: 160px;
+      background: radial-gradient(circle, rgba(37,99,235,0.18) 0%, rgba(15,23,42,0.8) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 16px;
+    }
+    .vf-handover-car-preview img {
+      max-height: 120px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.4));
+      transition: transform 0.3s ease;
+    }
+    .vf-handover-card:hover .vf-handover-car-preview img {
+      transform: scale(1.06);
+    }
+    .vf-handover-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #F8FAFC;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      backdrop-filter: blur(4px);
+    }
+    .vf-handover-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .vf-handover-customer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .vf-handover-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563EB, #1D4ED8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 13px;
+      color: #fff;
+    }
+    .vf-handover-cname {
+      font-size: 14px;
+      font-weight: 800;
+      color: #F8FAFC;
+    }
+    .vf-handover-loc {
+      font-size: 11.5px;
+      color: #94A3B8;
+    }
+    .vf-handover-quote {
+      font-size: 12.5px;
+      color: #CBD5E1;
+      line-height: 1.6;
+      font-style: italic;
+      margin: 0 0 16px;
+      flex: 1;
+    }
+    .vf-handover-stars {
+      color: #FBBF24;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 1080px) {
+      .vf-why-grid,
+      .vf-handover-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .vf-why-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+      .vf-stat-item:nth-child(2) {
+        border-right: none;
+      }
+    }
+    @media (max-width: 640px) {
+      .vf-why-grid,
+      .vf-handover-grid {
+        grid-template-columns: 1fr;
+      }
+      .vf-why-stats {
+        grid-template-columns: 1fr 1fr;
+        padding: 20px 14px;
+      }
+    }
+  </style>
+
+  <div class="container" style="position:relative; z-index:2;">
+
+    <!-- TOP HEADER -->
+    <div style="text-align: center; max-width: 780px; margin: 0 auto 46px;">
+      <span style="display:inline-flex; align-items:center; gap:6px; background:rgba(37,99,235,0.18); color:#60A5FA; font-size:12px; font-weight:800; padding:6px 18px; border-radius:30px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:14px; border:1px solid rgba(96,165,250,0.3);">
+        ⭐ ĐẠI LÝ ỦY QUYỀN CHÍNH THỨC
+      </span>
+      <h2 style="font-size:clamp(1.8rem, 3.2vw, 2.4rem); font-weight:900; color:#FFFFFF; margin:0 0 14px 0; text-transform:uppercase; letter-spacing:-0.5px; line-height:1.25;">
+        Tại Sao Nên Mua Xe Tại VinFast Tân Á Châu?
+      </h2>
+      <p style="color:#94A3B8; font-size:15px; margin:0 auto; line-height:1.6; max-width:620px;">
+        Đồng hành cùng hơn 5.000 khách hàng trên hành trình chuyển đổi xanh với sự chuyên nghiệp, tận tâm và uy tín hàng đầu.
+      </p>
+    </div>
+
+    <!-- 4 WHY CARDS -->
+    <div class="vf-why-grid">
+      <!-- 1 -->
+      <div class="vf-why-card">
+        <div class="vf-why-icon">🚗</div>
+        <h3 class="vf-why-title">Sẵn Xe Đủ Màu — Giao Ngay</h3>
+        <p class="vf-why-desc">
+          Kho xe lưu bãi quy mô lớn nhất khu vực, sẵn sàng các mẫu xe VF 3, VF 5, VF 6, VF 7, VF 8, VF 9. Hỗ trợ giao xe tận nhà theo giờ đẹp của khách hàng.
+        </p>
+      </div>
+
+      <!-- 2 -->
+      <div class="vf-why-card">
+        <div class="vf-why-icon">🔧</div>
+        <h3 class="vf-why-title">Xưởng Dịch Vụ 3S Chuẩn Hãng</h3>
+        <p class="vf-why-desc">
+          Hệ thống trang thiết bị chẩn đoán hiện đại, máy đo cân bằng động và phòng sơn sấy chuẩn quốc tế. Đội ngũ kỹ thuật viên được chứng nhận bởi VinFast.
+        </p>
+      </div>
+
+      <!-- 3 -->
+      <div class="vf-why-card">
+        <div class="vf-why-icon">🏠</div>
+        <h3 class="vf-why-title">Lái Thử Tận Nhà Miễn Phí</h3>
+        <p class="vf-why-desc">
+          Chỉ cần chọn mẫu xe yêu thích, đội ngũ tư vấn sẽ mang xe đến tận nhà hoặc cơ quan để quý khách trải nghiệm cảm giác lái thực tế hoàn toàn miễn phí.
+        </p>
+      </div>
+
+      <!-- 4 -->
+      <div class="vf-why-card">
+        <div class="vf-why-icon">📋</div>
+        <h3 class="vf-why-title">Hỗ Trợ Thủ Tục Lăn Bánh A-Z</h3>
+        <p class="vf-why-desc">
+          Hỗ trợ trọn gói đăng ký, đăng kiểm, bấm biển số đẹp. Gói vay trả góp duyệt nhanh trong 24h cả các hồ sơ khó, hỗ trợ cứu hộ 24/7 toàn quốc.
+        </p>
+      </div>
+    </div>
+
+    <!-- STATS STRIP -->
+    <div class="vf-why-stats">
+      <div class="vf-stat-item">
+        <div class="vf-stat-num">5.000+</div>
+        <div class="vf-stat-label">Khách hàng đồng hành</div>
+      </div>
+      <div class="vf-stat-item">
+        <div class="vf-stat-num">100%</div>
+        <div class="vf-stat-label">Xe mới & Phụ tùng chính hãng</div>
+      </div>
+      <div class="vf-stat-item">
+        <div class="vf-stat-num">24h</div>
+        <div class="vf-stat-label">Phê duyệt hồ sơ vay vốn</div>
+      </div>
+      <div class="vf-stat-item">
+        <div class="vf-stat-num">10 Năm</div>
+        <div class="vf-stat-label">Bảo hành chính hãng uy tín</div>
+      </div>
+    </div>
+
+    <!-- HANDOVER SHOWCASE HEADER -->
+    <div style="text-align: center; max-width: 780px; margin: 0 auto 36px;">
+      <span style="display:inline-flex; align-items:center; gap:6px; background:rgba(239,68,68,0.18); color:#F87171; font-size:12px; font-weight:800; padding:6px 18px; border-radius:30px; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:12px; border:1px solid rgba(248,113,113,0.3);">
+        🎉 NIỀM TIN KHÁCH HÀNG
+      </span>
+      <h3 style="font-size:clamp(1.6rem, 2.8vw, 2.1rem); font-weight:900; color:#FFFFFF; margin:0 0 10px 0; text-transform:uppercase; letter-spacing:-0.4px;">
+        Khoảnh Khắc Bàn Giao Xe Thực Tế
+      </h3>
+      <p style="color:#94A3B8; font-size:14.5px; margin:0 auto; line-height:1.6; max-width:600px;">
+        Hình ảnh và cảm nhận thực tế của các chủ nhân xe điện VinFast khi nhận xe tại showroom Tân Á Châu.
+      </p>
+    </div>
+
+    <!-- HANDOVER CARDS -->
+    <div class="vf-handover-grid">
+      <!-- 1: VF 3 -->
+      <div class="vf-handover-card">
+        <div class="vf-handover-car-preview">
+          <span class="vf-handover-badge">VinFast VF 3</span>
+          <img src="<?php echo esc_url(content_url('/uploads/official_cars/common/official_vf3.webp')); ?>" alt="Bàn giao VinFast VF 3" loading="lazy">
+        </div>
+        <div class="vf-handover-body">
+          <div class="vf-handover-customer">
+            <div class="vf-handover-avatar">HT</div>
+            <div>
+              <div class="vf-handover-cname">Anh Hoàng Tuấn</div>
+              <div class="vf-handover-loc">Nhận xe tại Showroom Tân Á Châu</div>
+            </div>
+          </div>
+          <p class="vf-handover-quote">
+            "Xe nhỏ gọn đi phố siêu tiện, sạc pin rất tiết kiệm. Đội ngũ tư vấn Tân Á Châu hỗ trợ nhận xe sớm và tặng kèm bộ phụ kiện rất chu đáo!"
+          </p>
+          <div class="vf-handover-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <!-- 2: VF 5 Plus -->
+      <div class="vf-handover-card">
+        <div class="vf-handover-car-preview">
+          <span class="vf-handover-badge">VinFast VF 5 Plus</span>
+          <img src="<?php echo esc_url(content_url('/uploads/official_cars/common/official_vf5.webp')); ?>" alt="Bàn giao VinFast VF 5" loading="lazy">
+        </div>
+        <div class="vf-handover-body">
+          <div class="vf-handover-customer">
+            <div class="vf-handover-avatar" style="background: linear-gradient(135deg, #059669, #10B981);">QH</div>
+            <div>
+              <div class="vf-handover-cname">Anh Quốc Huy</div>
+              <div class="vf-handover-loc">Kinh doanh dịch vụ vận chuyển</div>
+            </div>
+          </div>
+          <p class="vf-handover-quote">
+            "Chạy xe điện chi phí nhiên liệu rẻ hơn hẳn xe xăng, lại được miễn phí sạc pin V-GREEN. Thủ tục vay trả góp đại lý làm nhanh gọn trong 24 giờ."
+          </p>
+          <div class="vf-handover-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <!-- 3: VF 7 -->
+      <div class="vf-handover-card">
+        <div class="vf-handover-car-preview">
+          <span class="vf-handover-badge">VinFast VF 7 Plus</span>
+          <img src="<?php echo esc_url(content_url('/uploads/official_cars/common/official_vf7.webp')); ?>" alt="Bàn giao VinFast VF 7" loading="lazy">
+        </div>
+        <div class="vf-handover-body">
+          <div class="vf-handover-customer">
+            <div class="vf-handover-avatar" style="background: linear-gradient(135deg, #DC2626, #EF4444);">MP</div>
+            <div>
+              <div class="vf-handover-cname">Chị Mai Phương</div>
+              <div class="vf-handover-loc">Doanh nhân / Khách cá nhân</div>
+            </div>
+          </div>
+          <p class="vf-handover-quote">
+            "Thiết kế VF 7 quá đẹp, cảm giác lái đầm chắc và bốc. Rất ấn tượng với quy trình bàn giao xe trang trọng và chu đáo của đại lý Tân Á Châu."
+          </p>
+          <div class="vf-handover-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <!-- 4: VF 8 -->
+      <div class="vf-handover-card">
+        <div class="vf-handover-car-preview">
+          <span class="vf-handover-badge">VinFast VF 8</span>
+          <img src="<?php echo esc_url(content_url('/uploads/official_cars/common/official_vf8.webp')); ?>" alt="Bàn giao VinFast VF 8" loading="lazy">
+        </div>
+        <div class="vf-handover-body">
+          <div class="vf-handover-customer">
+            <div class="vf-handover-avatar" style="background: linear-gradient(135deg, #7C3AED, #8B5CF6);">ĐH</div>
+            <div>
+              <div class="vf-handover-cname">Bác Đức Hùng</div>
+              <div class="vf-handover-loc">Chủ nhân xe VF 8 Eco</div>
+            </div>
+          </div>
+          <p class="vf-handover-quote">
+            "Gia đình tôi rất hài lòng. Tính năng tự lái ADAS trên cao tốc đi rất nhàn và an tâm. Showroom hướng dẫn sử dụng xe chi tiết, 10 điểm cho dịch vụ!"
+          </p>
+          <div class="vf-handover-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM ACTION BAR -->
+    <div style="margin-top: 48px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+      <div style="font-size: 15px; color: #CBD5E1; font-weight: 600;">
+        Quý khách muốn trải nghiệm lái thử dòng xe yêu thích ngay hôm nay?
+      </div>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;">
+        <a href="<?php echo esc_url(home_url('/dang-ky-lai-thu/')); ?>" class="vf-btn vf-btn-primary" style="padding: 12px 28px; font-size: 14px;">
+          ĐĂNG KÝ LÁI THỬ TẬN NHÀ →
+        </a>
+        <a href="<?php echo esc_url(home_url('/dat-coc-xe/')); ?>" class="vf-btn vf-btn-outline" style="padding: 12px 24px; font-size: 14px; border-color: rgba(255,255,255,0.4); color: #fff;">
+          ĐẶT CỌC GIỮ XE ONLINE
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
