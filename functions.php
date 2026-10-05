@@ -297,41 +297,10 @@ function vfvp_get_car_image_url($model_slug) {
         $url  = $info['url'];
         $file = $info['file'];
 
-        $common_file = $cars_dir . '/common/' . $file;
-        if (file_exists($common_file) && filesize($common_file) > 1000) {
-            return $cars_url . '/common/' . $file;
-        }
-
-        $dest_file = $cars_dir . '/' . $file;
-        if (file_exists($dest_file) && filesize($dest_file) > 1000) {
-            return $cars_url . '/' . $file;
-        }
-
-        if (!empty($url)) {
-            $response = wp_remote_get($url, [
-                'timeout'    => 15,
-                'sslverify'  => false,
-                'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            ]);
-
-            if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
-                $body = wp_remote_retrieve_body($response);
-                if (!empty($body) && strlen($body) > 1000) {
-                    file_put_contents($common_file, $body);
-                    return $cars_url . '/common/' . $file;
-                }
-            }
-
-            return $url;
-        }
+        return get_stylesheet_directory_uri() . '/assets/images/vinfast-cars/' . $file;
     }
 
-    $default_common = $cars_dir . '/common/official_vf3.webp';
-    if (file_exists($default_common)) {
-        return $cars_url . '/common/official_vf3.webp';
-    }
-
-    return '/wp-content/uploads/official_cars/common/official_vf3.webp';
+    return get_stylesheet_directory_uri() . '/assets/images/vinfast-cars/official_vf3.webp';
 }
 
 // Register Custom Post Type for Accessories (Phụ kiện xe)
