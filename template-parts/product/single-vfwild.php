@@ -668,10 +668,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Sticky Subnav
   const subnav = document.getElementById('vfwildStickySubnav');
   window.addEventListener('scroll', function() {
-    if (window.scrollY > 450) {
+    if (window.scrollY > 100) {
       subnav.classList.add('active');
+      document.body.classList.add('vf-hide-main-header');
     } else {
       subnav.classList.remove('active');
+      document.body.classList.remove('vf-hide-main-header');
     }
   });
 

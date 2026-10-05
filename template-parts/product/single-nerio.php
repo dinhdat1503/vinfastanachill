@@ -1171,10 +1171,12 @@ $uploads_url = content_url('/uploads/official_cars/nerio');
 
   window.addEventListener('scroll', function () {
     const subnav = document.getElementById('nerioStickySubnav');
-    if (window.scrollY > 480) {
+    if (window.scrollY > 100) {
       subnav.classList.add('active');
+      document.body.classList.add('vf-hide-main-header');
     } else {
       subnav.classList.remove('active');
+      document.body.classList.remove('vf-hide-main-header');
     }
   });
 

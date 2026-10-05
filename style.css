@@ -11958,16 +11958,37 @@ input:checked + .vf-slider:before {
 /* ============================================================
    GLOBAL SINGLE PRODUCT SUBNAV & HEADER HIDE TOGGLE
    ============================================================ */
-#header,
-.header-wrapper,
-#masthead,
-.header-main {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+/* 1. Vô hiệu hóa Sticky của Header chính Flatsome riêng trên trang sản phẩm xe */
+body.single-product #header,
+body.single-product .header-wrapper,
+body.single-product .sticky-wrapper,
+body.single-product #masthead,
+body.single-car_model #header,
+body.single-car_model .header-wrapper,
+body.single-car_model .sticky-wrapper,
+body.single-car_model #masthead {
+  position: relative !important;
+  top: auto !important;
+  transform: none !important;
+  box-shadow: none !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s ease !important;
 }
 
+body.single-product .stuck,
+body.single-car_model .stuck {
+  position: relative !important;
+  top: auto !important;
+  box-shadow: none !important;
+}
+
+/* 2. Ẩn hoàn toàn Header chính khi Header phụ của xe được kích hoạt */
 body.vf-hide-main-header #header,
-body.vf-hide-main-header .header-wrapper {
-  display: none !important;
+body.vf-hide-main-header .header-wrapper,
+body.vf-hide-main-header #masthead,
+body.vf-hide-main-header .sticky-wrapper,
+#header.vf-header-hidden,
+.header-wrapper.vf-header-hidden {
+  transform: translateY(-100%) !important;
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
@@ -11980,6 +12001,7 @@ body.single-product #main,
   overflow: visible !important;
 }
 
+/* 3. Header phụ (Sub-header) của riêng từng sản phẩm */
 .vf-subnav,
 .vf-car-subnav,
 #carStickySubnav {
@@ -11989,7 +12011,7 @@ body.single-product #main,
   right: 0 !important;
   width: 100% !important;
   height: 60px !important;
-  background: rgba(255, 255, 255, 0.98) !important;
+  background: #ffffff !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border-bottom: 1px solid #E2E8F0 !important;

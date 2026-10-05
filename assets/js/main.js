@@ -177,18 +177,25 @@
   // 8. SINGLE PRODUCT SUBNAV & HEADER HIDE TOGGLE
   // =============================================
   function initProductSubnavToggle() {
-    var subnavs = document.querySelectorAll('.vf-subnav, .vf-car-subnav, #carStickySubnav');
+    var subnavs = document.querySelectorAll('.vf-subnav, .vf-car-subnav, #carStickySubnav, [id$="StickySubnav"]');
     if (!subnavs.length) return;
 
+    var header = document.getElementById('header');
+    var headerWrapper = document.querySelector('.header-wrapper');
+
     function handleScroll() {
-      if (window.scrollY > 250) {
+      if (window.scrollY > 100) {
         document.body.classList.add('vf-hide-main-header');
+        if (header) header.classList.add('vf-header-hidden');
+        if (headerWrapper) headerWrapper.classList.add('vf-header-hidden');
         subnavs.forEach(function(s) {
           s.classList.add('active');
           s.classList.add('subnav-visible');
         });
       } else {
         document.body.classList.remove('vf-hide-main-header');
+        if (header) header.classList.remove('vf-header-hidden');
+        if (headerWrapper) headerWrapper.classList.remove('vf-header-hidden');
         subnavs.forEach(function(s) {
           s.classList.remove('active');
           s.classList.remove('subnav-visible');
