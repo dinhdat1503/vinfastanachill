@@ -2989,6 +2989,8 @@ add_action('init', function() {
         }
     } else {
         update_post_meta($deposit_page->ID, '_wp_page_template', 'page-dat-coc.php');
+    }
+
     // Đảm bảo trang phu-kien tồn tại
     $phu_kien_page = get_page_by_path('phu-kien');
     if (!$phu_kien_page) {
