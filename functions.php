@@ -94,7 +94,7 @@ function vfvp_enqueue_assets() {
     wp_enqueue_script('glightbox', 'https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js', [], '3', true);
     // Child JS - Cache-friendly version
     wp_enqueue_script('vfvp-main', get_stylesheet_directory_uri() . '/assets/js/main.js', ['jquery', 'swiper-js'], '1.2.1', true);
-    wp_enqueue_script('vfvp-modal', get_stylesheet_directory_uri() . '/assets/js/vfvp-modal.js', [], '1.2.2', true);
+    wp_enqueue_script('vfvp-modal', get_stylesheet_directory_uri() . '/assets/js/vfvp-modal.js', [], '1.2.3', true);
 
     // AJAX
     wp_localize_script('vfvp-main', 'vfvpAjax', [

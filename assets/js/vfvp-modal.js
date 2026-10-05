@@ -187,19 +187,4 @@
   }
   window.addEventListener('load', updatePromoBadges);
 
-  // Observer to catch any dynamic modal insertions or cache delays
-  if (typeof MutationObserver !== 'undefined') {
-    var promoObserver = new MutationObserver(function() {
-      // FIX: Disconnect observer before making changes to prevent infinite recursive loop!
-      promoObserver.disconnect();
-      updatePromoBadges();
-      // Reconnect after changes are done
-      promoObserver.observe(document.documentElement, { childList: true, subtree: true });
-    });
-    promoObserver.observe(document.documentElement, { childList: true, subtree: true });
-    setTimeout(function() {
-      promoObserver.disconnect();
-    }, 6000);
-  }
-
 })();
