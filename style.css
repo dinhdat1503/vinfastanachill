@@ -5283,6 +5283,19 @@ button.vf-btn-secondary:hover * {
   color: #CBD5E1 !important;
   font-weight: 800 !important;
   letter-spacing: 0.3px !important;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.vf-footer-catchie a {
+  color: inherit !important;
+  text-decoration: none !important;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.vf-footer-catchie a:hover strong {
+  color: #FFFFFF !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 .vf-footer-divider {

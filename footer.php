@@ -118,7 +118,7 @@ $uploads_url = content_url('/uploads/official_cars/common');
           <div id="vfFooterServiceNotice" style="display:none; font-size:12px; margin-top:8px; line-height:1.4;"></div>
 
           <div class="vf-footer-catchie">
-            Thiết kế bởi <strong>CATCHIE</strong>
+            Thiết kế bởi <a href="https://catchie.com.vn/" target="_blank" rel="noopener noreferrer"><strong>CATCHIE</strong></a>
           </div>
 
           <p class="vf-footer-disclaimer">
