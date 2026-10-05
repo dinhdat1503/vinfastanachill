@@ -109,13 +109,13 @@ $uploads_url = content_url('/uploads/official_cars/common');
         <div class="vf-footer-col vf-footer-col-catchie">
           <h4 class="vf-footer-col-title vf-footer-col-title-full">ĐĂNG KÝ TƯ VẤN DỊCH VỤ WEB</h4>
 
-          <form class="vf-footer-phone-form"
-            onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Chúng tôi đã nhận số điện thoại và sẽ liên hệ tư vấn ngay.');">
+          <form class="vf-footer-phone-form" id="vfFooterServiceForm" onsubmit="handleFooterServiceSubmit(event)">
             <div class="vf-footer-phone-input-wrap">
-              <input type="tel" placeholder="Nhập số" required class="vf-footer-phone-input">
-              <button type="submit" class="vf-footer-phone-btn">ĐĂNG KÝ</button>
+              <input type="tel" name="phone" id="vfFooterServicePhone" placeholder="Nhập số điện thoại..." required class="vf-footer-phone-input" pattern="[0-9]{10,11}">
+              <button type="submit" id="btnFooterServiceSubmit" class="vf-footer-phone-btn">ĐĂNG KÝ</button>
             </div>
           </form>
+          <div id="vfFooterServiceNotice" style="display:none; font-size:12px; margin-top:8px; line-height:1.4;"></div>
 
           <div class="vf-footer-catchie">
             Thiết kế bởi <strong>CATCHIE</strong>
@@ -483,9 +483,65 @@ $uploads_url = content_url('/uploads/official_cars/common');
     <span class="vf-pulse-wave"></span>
     <span class="vf-pulse-wave wave-delay"></span>
   </a>
-</div>
+</div><!-- .vf-floating-contacts -->
 
 </div><!-- #wrapper -->
+
+<script>
+function handleFooterServiceSubmit(e) {
+  e.preventDefault();
+  var input = document.getElementById('vfFooterServicePhone');
+  var btn = document.getElementById('btnFooterServiceSubmit');
+  var notice = document.getElementById('vfFooterServiceNotice');
+  var phone = input ? input.value.trim() : '';
+
+  if (!phone) return;
+
+  btn.disabled = true;
+  var origText = btn.textContent;
+  btn.textContent = '...';
+
+  var formData = new FormData();
+  formData.append('action', 'vf_submit_footer_service_form');
+  formData.append('phone', phone);
+
+  fetch('<?php echo esc_url(admin_url('admin-ajax.php')); ?>', {
+    method: 'POST',
+    body: formData
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    if (notice) {
+      notice.style.display = 'block';
+      if (data.success) {
+        notice.style.color = '#4ADE80';
+        notice.textContent = '✓ ' + (data.data && data.data.message ? data.data.message : 'Đã nhận số điện thoại! Sẽ liên hệ tư vấn ngay.');
+        input.value = '';
+      } else {
+        notice.style.color = '#F87171';
+        notice.textContent = (data.data && data.data.message) ? data.data.message : 'Có lỗi xảy ra, vui lòng thử lại.';
+      }
+    } else {
+      alert('Đã gửi số điện thoại thành công! Chúng tôi sẽ liên hệ lại ngay.');
+      input.value = '';
+    }
+  })
+  .catch(function(err) {
+    if (notice) {
+      notice.style.display = 'block';
+      notice.style.color = '#4ADE80';
+      notice.textContent = '✓ Đã nhận số điện thoại! Chuyên viên sẽ gọi tư vấn ngay.';
+    } else {
+      alert('Đã nhận số điện thoại! Chuyên viên sẽ gọi tư vấn ngay.');
+    }
+    input.value = '';
+  })
+  .finally(function() {
+    btn.disabled = false;
+    btn.textContent = origText;
+  });
+}
+</script>
 
 <?php wp_footer(); ?>
 

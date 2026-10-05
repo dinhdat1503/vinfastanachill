@@ -11,7 +11,8 @@ defined('ABSPATH') || exit;
 // Thêm email vào mảng bên dưới để nhận đồng thời nhiều địa chỉ
 // =========================================================
 define('VFVP_CONTACT_EMAILS', [
-    'ngodinhdat15@gmail.com',     // Email chính — quản lý đại lý
+    'ngodinhdat15@gmail.com',     // Email quản lý chính
+    'phuocvandangdilam@gmail.com', // Email liên hệ đại lý
     'hoangbuizzzz15@gmail.com',   // Email nhận đồng thời
 ]);
 
@@ -3063,9 +3064,102 @@ function vfvp_handle_deposit_form_ajax() {
     $emails = defined('VFVP_CONTACT_EMAILS') ? VFVP_CONTACT_EMAILS : [get_option('admin_email')];
     @wp_mail($emails, $subject, $body, $headers);
 
+    // Bắn thông báo Telegram khi có khách đặt cọc
+    $tg_msg  = "🚗 <b>[YÊU CẦU ĐẶT CỌC XE VINFAST]</b>\n";
+    $tg_msg .= "👤 <b>Khách hàng:</b> {$name}\n";
+    $tg_msg .= "📞 <b>Số điện thoại:</b> <code>{$phone}</code>\n";
+    if (!empty($email)) $tg_msg .= "📧 <b>Email:</b> {$email}\n";
+    $tg_msg .= "🚙 <b>Dòng xe:</b> <b>{$car}</b>\n";
+    $tg_msg .= "🎨 <b>Màu xe:</b> {$color}\n";
+    $tg_msg .= "🔋 <b>Gói pin:</b> {$battery}\n";
+    $tg_msg .= "💳 <b>Thanh toán:</b> {$payment}\n";
+    if (!empty($location)) $tg_msg .= "📍 <b>Địa chỉ:</b> {$location}\n";
+    if (!empty($note)) $tg_msg .= "📝 <b>Ghi chú:</b> {$note}\n";
+    $tg_msg .= "⏱️ <b>Thời gian:</b> " . current_time('d/m/Y H:i:s');
+    vfvp_send_telegram($tg_msg);
+
     wp_send_json_success([
         'message' => 'Gửi yêu cầu đặt cọc thành công!',
         'car'     => $car,
         'name'    => $name
+    ]);
+}
+
+// ============================================================
+// 🤖 TELEGRAM NOTIFICATION HELPER
+// ============================================================
+if (!defined('VFVP_TELEGRAM_BOT_TOKEN')) {
+    define('VFVP_TELEGRAM_BOT_TOKEN', ''); // Điền Telegram Bot Token vào đây nếu muốn nhận tin nhắn Telegram
+}
+if (!defined('VFVP_TELEGRAM_CHAT_ID')) {
+    define('VFVP_TELEGRAM_CHAT_ID', '');   // Điền Telegram Chat ID vào đây
+}
+
+function vfvp_send_telegram($text) {
+    $token   = defined('VFVP_TELEGRAM_BOT_TOKEN') ? VFVP_TELEGRAM_BOT_TOKEN : '';
+    $chat_id = defined('VFVP_TELEGRAM_CHAT_ID') ? VFVP_TELEGRAM_CHAT_ID : '';
+
+    if (empty($token) || empty($chat_id)) {
+        return false;
+    }
+
+    $url = "https://api.telegram.org/bot{$token}/sendMessage";
+    $args = [
+        'body' => [
+            'chat_id'                  => $chat_id,
+            'text'                     => $text,
+            'parse_mode'               => 'HTML',
+            'disable_web_page_preview' => true,
+        ],
+        'timeout' => 5,
+    ];
+    $res = wp_remote_post($url, $args);
+    return !is_wp_error($res);
+}
+
+// ============================================================
+// 📩 XỬ LÝ FORM ĐĂNG KÝ TƯ VẤN DỊCH VỤ WEB (FOOTER CỘT 4)
+// ============================================================
+add_action('wp_ajax_vf_submit_footer_service_form', 'vfvp_handle_footer_service_form');
+add_action('wp_ajax_nopriv_vf_submit_footer_service_form', 'vfvp_handle_footer_service_form');
+function vfvp_handle_footer_service_form() {
+    $phone = sanitize_text_field($_POST['phone'] ?? '');
+
+    $clean_phone = preg_replace('/[^0-9]/', '', $phone);
+    if (empty($phone) || strlen($clean_phone) < 9) {
+        wp_send_json_error(['message' => 'Vui lòng nhập số điện thoại hợp lệ (từ 10 số).']);
+    }
+
+    $time = current_time('d/m/Y H:i:s');
+    $subject = "⚡ [YÊU CẦU TƯ VẤN DỊCH VỤ WEB] Khách hàng để lại SĐT: {$phone}";
+
+    $body  = "Kính gửi Ban Quản Lý,\n\n";
+    $body .= "Hệ thống vừa nhận được một yêu cầu đăng ký tư vấn dịch vụ web từ chân trang:\n";
+    $body .= "--------------------------------------------------------\n";
+    $body .= "📞 Số điện thoại khách hàng: {$phone}\n";
+    $body .= "🎯 Mục yêu cầu: Đăng Ký Tư Vấn Dịch Vụ Web (Catchie)\n";
+    $body .= "🌐 Trang gửi: " . home_url('/') . "\n";
+    $body .= "⏱️ Thời gian: {$time}\n";
+    $body .= "--------------------------------------------------------\n\n";
+    $body .= "Vui lòng liên hệ lại khách hàng để tư vấn chi tiết.\n\n";
+    $body .= "Trân trọng,\nHệ Thống Website VinFast Tân Á Châu";
+
+    $headers = [
+        'Content-Type: text/plain; charset=UTF-8',
+        'From: Catchie Service <' . (defined('VFVP_SMTP_USERNAME') ? VFVP_SMTP_USERNAME : get_option('admin_email')) . '>',
+    ];
+
+    $emails = defined('VFVP_CONTACT_EMAILS') ? VFVP_CONTACT_EMAILS : [get_option('admin_email')];
+    @wp_mail($emails, $subject, $body, $headers);
+
+    // Gửi Telegram
+    $tg_msg  = "⚡ <b>[YÊU CẦU TƯ VẤN DỊCH VỤ WEB]</b>\n";
+    $tg_msg .= "📞 <b>Số điện thoại:</b> <code>{$phone}</code>\n";
+    $tg_msg .= "🎯 <b>Dịch vụ:</b> Tư vấn Dịch Vụ Web (Catchie)\n";
+    $tg_msg .= "⏱️ <b>Thời gian:</b> {$time}";
+    vfvp_send_telegram($tg_msg);
+
+    wp_send_json_success([
+        'message' => 'Đã nhận số điện thoại thành công! Chúng tôi sẽ liên hệ tư vấn trong ít phút.'
     ]);
 }
