@@ -68,7 +68,7 @@ $common_url  = content_url('/uploads/official_cars/common');
   .vfwild-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.7) 65%, rgba(15, 23, 42, 0.96) 100%); }
   .vfwild-hero-content { position: relative; z-index: 10; padding-bottom: 50px; color: #ffffff; max-width: 1280px; margin: 0 auto; padding-left: 24px; padding-right: 24px; width: 100%; }
   .vfwild-hero-badge { display: inline-block; background: #2563EB; color: #ffffff; font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 4px; margin-bottom: 14px; }
-  .vfwild-hero-title { font-family: 'Mulish', 'Inter', sans-serif; font-size: clamp(2.5rem, 5.5vw, 4.2rem); font-weight: 900; line-height: 1.05; margin-bottom: 12px; text-transform: uppercase; letter-spacing: -1px; }
+  .vfwild-hero-title { font-family: 'Mulish', 'Inter', sans-serif; font-size: clamp(2.5rem, 5.5vw, 4.2rem); font-weight: 900; line-height: 1.05; margin-bottom: 12px; text-transform: uppercase; letter-spacing: -1px; color: #ffffff !important; }
   .vfwild-hero-desc { font-size: 1.15rem; color: rgba(255,255,255,0.92); max-width: 680px; margin-bottom: 24px; line-height: 1.6; }
 
   /* Quick Spec Badges in Hero */
