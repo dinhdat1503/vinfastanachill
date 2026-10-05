@@ -82,8 +82,9 @@ add_action('wp_enqueue_scripts', 'vfvp_enqueue_assets');
 function vfvp_enqueue_assets() {
     // Parent theme
     wp_enqueue_style('flatsome-parent', get_template_directory_uri() . '/style.css');
-    // Child theme - Cache-friendly version
-    wp_enqueue_style('flatsome-child', get_stylesheet_directory_uri() . '/style.css', ['flatsome-parent'], '1.2.2');
+    // Child theme - Auto-cache-busting version based on file modification time
+    $css_ver = filemtime(get_stylesheet_directory() . '/style.css');
+    wp_enqueue_style('flatsome-child', get_stylesheet_directory_uri() . '/style.css', ['flatsome-parent'], $css_ver);
     // Google Fonts (Tối ưu tải nhanh, chỉ lấy trọng số cần thiết)
     wp_enqueue_style('vfvp-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap', [], null);
     // Swiper.js
@@ -92,9 +93,11 @@ function vfvp_enqueue_assets() {
     // GLightbox
     wp_enqueue_style('glightbox', 'https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css', [], '3');
     wp_enqueue_script('glightbox', 'https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js', [], '3', true);
-    // Child JS - Cache-friendly version
-    wp_enqueue_script('vfvp-main', get_stylesheet_directory_uri() . '/assets/js/main.js', ['jquery', 'swiper-js'], '1.2.1', true);
-    wp_enqueue_script('vfvp-modal', get_stylesheet_directory_uri() . '/assets/js/vfvp-modal.js', [], '1.2.3', true);
+    // Child JS - Auto-cache-busting version
+    $main_js_ver = filemtime(get_stylesheet_directory() . '/assets/js/main.js');
+    $modal_js_ver = filemtime(get_stylesheet_directory() . '/assets/js/vfvp-modal.js');
+    wp_enqueue_script('vfvp-main', get_stylesheet_directory_uri() . '/assets/js/main.js', ['jquery', 'swiper-js'], $main_js_ver, true);
+    wp_enqueue_script('vfvp-modal', get_stylesheet_directory_uri() . '/assets/js/vfvp-modal.js', [], $modal_js_ver, true);
 
     // AJAX
     wp_localize_script('vfvp-main', 'vfvpAjax', [
