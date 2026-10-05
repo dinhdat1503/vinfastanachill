@@ -6,7 +6,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
 
 <style>
 /* ============================================================
-   VINFAST LUXURY DEPOSIT PAGE STYLES & ANIMATIONS
+   VINFAST LUXURY DEPOSIT PAGE STYLES & MOBILE OPTIMIZATIONS
    ============================================================ */
 .vf-deposit-wrapper {
   background: #F8FAFC !important;
@@ -23,7 +23,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
 .vf-dep-hero {
   background: linear-gradient(135deg, #060B1A 0%, #0F2256 50%, #1E40AF 100%) !important;
   color: #ffffff !important;
-  padding: 60px 20px 80px 20px !important;
+  padding: 55px 20px 75px 20px !important;
   text-align: center !important;
   position: relative !important;
   overflow: hidden !important;
@@ -89,7 +89,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   align-items: center;
   justify-content: center;
   max-width: 780px;
-  margin: 28px auto 0 auto;
+  margin: 26px auto 0 auto;
   position: relative;
   z-index: 2;
   padding: 0 10px;
@@ -133,7 +133,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   max-width: 90px;
 }
 
-/* 3. MAIN CONTAINER */
+/* 3. MAIN CONTAINER & DESKTOP GRID */
 .vf-dep-container {
   max-width: 1200px !important;
   margin: -40px auto 0 auto !important;
@@ -148,7 +148,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   align-items: start !important;
 }
 
-/* 4. LEFT COLUMN: PREVIEW CARD */
+/* 4. PREVIEW CARD */
 .vf-dep-preview-card {
   background: #ffffff !important;
   border-radius: 20px !important;
@@ -231,14 +231,14 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   line-height: 1.5 !important;
 }
 
-/* Car Stage & 3D Hover */
+/* Car Stage */
 .vf-dep-preview-img-wrap {
   min-height: 230px !important;
   max-height: 280px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 26px 0 20px !important;
+  padding: 24px 0 18px !important;
   position: relative !important;
   perspective: 1000px;
 }
@@ -253,12 +253,11 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   will-change: transform, opacity;
 }
 .vf-dep-car-img:hover {
-  transform: translateY(-6px) scale(1.03);
-  filter: drop-shadow(0 24px 38px rgba(37, 99, 235, 0.22)) !important;
+  transform: translateY(-5px) scale(1.02);
 }
 .vf-dep-car-img.fade-out {
   opacity: 0 !important;
-  transform: scale(0.96) translateY(10px) !important;
+  transform: scale(0.96) translateY(8px) !important;
 }
 
 /* Config Chips */
@@ -285,7 +284,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   font-weight: 800;
 }
 
-/* Deposit Amount Box with Glowing Neon Border */
+/* Deposit Amount Box */
 .vf-dep-amount-box {
   background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%) !important;
   border: 1.5px solid #93C5FD !important;
@@ -373,7 +372,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   line-height: 1.45 !important;
 }
 
-/* 5. RIGHT COLUMN: FORM CARD */
+/* 5. FORM CARD */
 .vf-dep-form-card {
   background: #ffffff !important;
   border-radius: 20px !important;
@@ -402,7 +401,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   line-height: 1.5 !important;
 }
 
-/* Form Grid */
+/* Form Fields */
 .vf-dep-form-grid {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
@@ -458,21 +457,21 @@ $uploads_url = content_url('/uploads/official_cars/common/');
 
 /* Color Swatches Interaction */
 .vf-color-swatches-wrap {
-  margin-top: 8px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 .vf-swatch-title {
-  font-size: 11px;
+  font-size: 11.5px;
   color: #64748B;
-  font-weight: 600;
+  font-weight: 700;
   width: 100%;
 }
 .vf-swatch-btn {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid #ffffff;
@@ -487,10 +486,10 @@ $uploads_url = content_url('/uploads/official_cars/common/');
 .vf-swatch-btn.active {
   transform: scale(1.2);
   outline: 2.5px solid #2563EB;
-  box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.5);
 }
 
-/* Submit Button with Shimmer & Glow */
+/* Submit Button */
 .vf-dep-submit-btn {
   height: 52px !important;
   line-height: 52px !important;
@@ -550,17 +549,17 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   text-align: center !important;
 }
 
-/* 6. SUCCESS MODAL & VIETQR UPGRADE */
+/* 6. SUCCESS MODAL & VIETQR */
 .vf-dep-modal {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(15, 23, 42, 0.78);
   backdrop-filter: blur(8px);
   z-index: 99999999;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 16px;
 }
 .vf-dep-modal.active {
   display: flex;
@@ -568,14 +567,14 @@ $uploads_url = content_url('/uploads/official_cars/common/');
 .vf-dep-modal-content {
   background: #ffffff;
   border-radius: 22px;
-  max-width: 540px;
+  max-width: 530px;
   width: 100%;
-  padding: 34px 28px;
+  padding: 32px 24px;
   text-align: center;
   box-shadow: 0 25px 60px rgba(0,0,0,0.3);
-  animation: vfModalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: vfModalPop 0.38s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  max-height: 90vh;
+  max-height: 92vh;
   overflow-y: auto;
 }
 @keyframes vfModalPop {
@@ -583,29 +582,29 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 .vf-dep-modal-icon {
-  width: 64px;
-  height: 64px;
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
   background: #DCFCE7;
   color: #16A34A;
-  font-size: 32px;
+  font-size: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 14px;
+  margin: 0 auto 12px;
   box-shadow: 0 8px 20px rgba(22, 163, 74, 0.22);
 }
 .vf-dep-modal-title {
-  font-size: 21px;
+  font-size: 20px;
   font-weight: 900;
   color: #0F172A;
   margin: 0 0 6px;
   text-transform: uppercase;
 }
 .vf-dep-modal-desc {
-  font-size: 13.5px;
+  font-size: 13px;
   color: #64748B;
-  margin: 0 0 18px;
+  margin: 0 0 16px;
   line-height: 1.5;
 }
 
@@ -614,8 +613,8 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   background: #F8FAFC;
   border: 1.5px solid #E2E8F0;
   border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 20px;
+  padding: 16px 14px;
+  margin-bottom: 18px;
   text-align: center;
 }
 .vf-vietqr-badge {
@@ -626,21 +625,21 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   font-weight: 800;
   padding: 3px 10px;
   border-radius: 6px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   border: 1px solid #BFDBFE;
 }
 .vf-qr-img-wrapper {
   background: #ffffff;
-  padding: 10px;
+  padding: 8px;
   border-radius: 12px;
   display: inline-block;
   box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   border: 1px solid #E2E8F0;
 }
 .vf-qr-img {
-  width: 190px;
-  height: 190px;
+  width: 180px;
+  height: 180px;
   display: block;
   object-fit: contain;
 }
@@ -648,7 +647,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   background: #ffffff;
   border: 1px solid #E2E8F0;
   border-radius: 12px;
-  padding: 14px;
+  padding: 12px 14px;
   text-align: left;
   font-size: 12.5px;
   margin-top: 10px;
@@ -680,7 +679,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   border-color: #2563EB;
 }
 
-/* Toast Copy Notice */
+/* Toast Notice */
 .vf-toast-notice {
   position: fixed;
   bottom: 24px;
@@ -728,27 +727,245 @@ $uploads_url = content_url('/uploads/official_cars/common/');
   z-index: 999999998;
 }
 
-/* 7. RESPONSIVE */
+/* 7. FLOATING MOBILE STICKY BAR */
+.vf-mobile-sticky-bar {
+  display: none;
+}
+
+/* ============================================================
+   8. COMPREHENSIVE RESPONSIVE MOBILE OPTIMIZATIONS (<= 900px)
+   ============================================================ */
 @media (max-width: 900px) {
-  .vf-dep-grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
+  /* Hero Section */
+  .vf-dep-hero {
+    padding: 38px 16px 54px 16px !important;
+  }
+  .vf-dep-badge {
+    font-size: 11px !important;
+    padding: 5px 14px !important;
+    margin-bottom: 12px !important;
   }
   .vf-dep-title {
-    font-size: 24px !important;
+    font-size: 22px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 8px !important;
   }
-  .vf-dep-features {
-    grid-template-columns: 1fr !important;
+  .vf-dep-subtitle {
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+  }
+  .vf-dep-steps-bar {
+    display: none !important;
+  }
+
+  /* Container */
+  .vf-dep-container {
+    margin: -28px auto 0 auto !important;
+    padding: 0 14px !important;
+  }
+
+  /* CRO Flow Ordering: Unpack columns so Form sits right below Car Preview! */
+  .vf-dep-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  .vf-dep-left {
+    display: contents !important;
+  }
+  .vf-dep-right {
+    display: contents !important;
+  }
+
+  /* ORDER: 1. Car Preview -> 2. Form -> 3. Commitments */
+  .vf-dep-preview-card {
+    order: 1 !important;
+    margin-bottom: 0 !important;
+    padding: 20px 16px !important;
+    border-radius: 18px !important;
   }
   .vf-dep-form-card {
+    order: 2 !important;
     padding: 24px 18px !important;
+    border-radius: 18px !important;
+  }
+  .vf-dep-features {
+    order: 3 !important;
+    margin-top: 4px !important;
+  }
+
+  /* Preview Card Polish on Mobile */
+  .vf-dep-preview-title {
+    font-size: 22px !important;
+  }
+  .vf-dep-preview-sub {
+    font-size: 12.5px !important;
+  }
+  .vf-dep-preview-img-wrap {
+    min-height: 180px !important;
+    max-height: 210px !important;
+    padding: 16px 0 !important;
+  }
+  .vf-dep-car-img {
+    max-height: 190px !important;
+  }
+  .vf-dep-chips {
+    gap: 6px !important;
+    margin: 12px 0 !important;
+  }
+  .vf-dep-chip {
+    font-size: 11.5px !important;
+    padding: 4px 10px !important;
+    border-radius: 6px !important;
+  }
+  .vf-dep-amount-box {
+    padding: 14px 16px !important;
+    border-radius: 14px !important;
+  }
+  .vf-dep-amount-label span:first-child {
+    font-size: 11px !important;
+  }
+  .vf-dep-amount-val {
+    font-size: 20px !important;
+  }
+
+  /* Form Inputs on Mobile (16px to prevent iOS Safari auto-zoom!) */
+  .vf-dep-form-head h2 {
+    font-size: 19px !important;
+  }
+  .vf-dep-form-head p {
+    font-size: 12.5px !important;
   }
   .vf-dep-form-grid {
     grid-template-columns: 1fr !important;
     gap: 14px !important;
   }
-  .vf-dep-steps-bar {
-    display: none;
+  .vf-dep-form-group label {
+    font-size: 13px !important;
+    margin-bottom: 5px !important;
+  }
+  .vf-dep-form-group input[type="text"],
+  .vf-dep-form-group input[type="tel"],
+  .vf-dep-form-group input[type="email"],
+  .vf-dep-form-group select,
+  .vf-dep-form-group textarea {
+    font-size: 16px !important; /* Critical for iOS Safari */
+    height: 48px !important;
+    border-radius: 8px !important;
+    padding: 10px 14px !important;
+  }
+  .vf-dep-form-group textarea {
+    height: 82px !important;
+    min-height: 82px !important;
+  }
+
+  /* Touch-friendly Swatch Buttons */
+  .vf-swatch-btn {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .vf-dep-submit-btn {
+    height: 52px !important;
+    line-height: 52px !important;
+    font-size: 14px !important;
+    border-radius: 10px !important;
+  }
+
+  /* Commitment Cards on Mobile */
+  .vf-dep-features {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+  .vf-dep-feat-card {
+    padding: 14px 12px !important;
+    gap: 10px !important;
+    border-radius: 14px !important;
+  }
+  .vf-dep-feat-card .feat-icon {
+    font-size: 22px !important;
+  }
+  .vf-dep-feat-card .feat-text h4 {
+    font-size: 12.5px !important;
+    margin-bottom: 3px !important;
+  }
+  .vf-dep-feat-card .feat-text p {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Modal on Mobile */
+  .vf-dep-modal-content {
+    padding: 24px 16px !important;
+    border-radius: 20px !important;
+    max-width: 95vw !important;
+  }
+  .vf-dep-modal-title {
+    font-size: 18px !important;
+  }
+  .vf-dep-modal-desc {
+    font-size: 12.5px !important;
+  }
+  .vf-qr-img {
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+  /* Mobile Sticky Bottom Bar */
+  .vf-mobile-sticky-bar {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: rgba(15, 23, 42, 0.95) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    padding: 11px 16px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+    z-index: 999999 !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.3) !important;
+    transform: translateY(110%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+  .vf-mobile-sticky-bar.visible {
+    transform: translateY(0) !important;
+  }
+  .vf-msb-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .vf-msb-car {
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 800;
+  }
+  .vf-msb-amount {
+    color: #93C5FD;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .vf-msb-btn {
+    background: linear-gradient(135deg, #2563EB, #1D4ED8);
+    color: #ffffff !important;
+    font-size: 12.5px;
+    font-weight: 800;
+    padding: 9px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.45);
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 480px) {
+  .vf-dep-features {
+    grid-template-columns: 1fr !important;
   }
 }
 </style>
@@ -758,6 +975,15 @@ $uploads_url = content_url('/uploads/official_cars/common/');
 
 <!-- Copy Toast Notification -->
 <div id="vfCopyToast" class="vf-toast-notice">✓ Đã sao chép vào bộ nhớ tạm!</div>
+
+<!-- Floating Mobile Sticky Bottom Bar -->
+<div id="vfMobileStickyBar" class="vf-mobile-sticky-bar">
+  <div class="vf-msb-info">
+    <div class="vf-msb-car" id="msbCarName">VinFast VF 5 Plus</div>
+    <div class="vf-msb-amount" id="msbDepositAmount">Cọc 15.000.000 VNĐ</div>
+  </div>
+  <button type="button" class="vf-msb-btn" onclick="scrollToDepositForm()">ĐIỀN ĐƠN CỌC</button>
+</div>
 
 <div class="vf-deposit-wrapper">
 
@@ -770,7 +996,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
         Ưu tiên nhận xe sớm nhất, bảo toàn trọn vẹn chính sách giá & quà tặng ưu đãi trong tháng tại VinFast Tân Á Châu
       </p>
 
-      <!-- 3-STEP PROGRESS BAR -->
+      <!-- 3-STEP PROGRESS BAR (Desktop) -->
       <div class="vf-dep-steps-bar">
         <div class="vf-step-item active">
           <span class="vf-step-num">1</span>
@@ -798,7 +1024,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
       <div class="vf-dep-left">
 
         <!-- PREVIEW CARD -->
-        <div class="vf-dep-preview-card">
+        <div class="vf-dep-preview-card" id="vfDepPreviewCard">
           <div class="vf-dep-preview-header">
             <span class="vf-dep-preview-tag">DÒNG XE ĐANG CHỌN</span>
             <span class="vf-dep-badge-status">Sẵn xe giao ngay</span>
@@ -807,7 +1033,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
           <h3 id="vfDepCarName" class="vf-dep-preview-title">VinFast VF 5 Plus</h3>
           <p id="vfDepCarSub" class="vf-dep-preview-sub">Mẫu A-SUV đô thị năng động, phong cách thời thượng</p>
 
-          <!-- Stage Image with Subtle 3D Depth -->
+          <!-- Stage Image -->
           <div class="vf-dep-preview-img-wrap">
             <img id="vfDepCarImg" 
                  src="<?php echo esc_url($uploads_url . 'official_vf5.webp'); ?>" 
@@ -822,7 +1048,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
             <span class="vf-dep-chip">Màu: <strong id="chipColor">Trắng Brahmini White</strong></span>
           </div>
 
-          <!-- Deposit Standard Box with Glow Effect & Number Ticker -->
+          <!-- Deposit Standard Box -->
           <div class="vf-dep-amount-box" id="vfDepAmountBox">
             <div class="vf-dep-amount-label">
               <span>TIỀN ĐẶT CỌC TIÊU CHUẨN</span>
@@ -871,7 +1097,7 @@ $uploads_url = content_url('/uploads/official_cars/common/');
 
       <!-- RIGHT: DEPOSIT REGISTRATION FORM -->
       <div class="vf-dep-right">
-        <div class="vf-dep-form-card">
+        <div class="vf-dep-form-card" id="vfDepositFormCard">
           <div class="vf-dep-form-head">
             <h2>THÔNG TIN ĐẶT CỌC XE</h2>
             <p>Vui lòng điền thông tin người đứng tên hợp đồng. Chuyên viên VinFast Tân Á Châu sẽ gọi xác nhận trong 10 phút.</p>
@@ -1218,6 +1444,7 @@ var currentDepositVal = 15000000;
 function animateDepositAmount(targetVal) {
   var el = document.getElementById('vfDepAmountDisplay');
   var box = document.getElementById('vfDepAmountBox');
+  var msbAmount = document.getElementById('msbDepositAmount');
   if (!el) return;
 
   box.classList.remove('pulse');
@@ -1233,11 +1460,15 @@ function animateDepositAmount(targetVal) {
     if (!startTime) startTime = timestamp;
     var progress = Math.min((timestamp - startTime) / duration, 1);
     var val = Math.floor(progress * (end - start) + start);
-    el.textContent = val.toLocaleString('vi-VN') + ' VNĐ';
+    var formatted = val.toLocaleString('vi-VN') + ' VNĐ';
+    el.textContent = formatted;
+    if (msbAmount) msbAmount.textContent = 'Cọc ' + formatted;
     if (progress < 1) {
       window.requestAnimationFrame(step);
     } else {
-      el.textContent = end.toLocaleString('vi-VN') + ' VNĐ';
+      var finalFormatted = end.toLocaleString('vi-VN') + ' VNĐ';
+      el.textContent = finalFormatted;
+      if (msbAmount) msbAmount.textContent = 'Cọc ' + finalFormatted;
       currentDepositVal = end;
     }
   }
@@ -1258,11 +1489,13 @@ function onCarChange(val) {
   var subEl = document.getElementById('vfDepCarSub');
   var imgEl = document.getElementById('vfDepCarImg');
   var chipVer = document.getElementById('chipVersion');
+  var msbCar = document.getElementById('msbCarName');
 
   if (found) {
     nameEl.textContent = found.title;
     subEl.textContent = found.sub;
     chipVer.textContent = found.version;
+    if (msbCar) msbCar.textContent = found.title;
     animateDepositAmount(found.depositVal || 15000000);
 
     imgEl.classList.add('fade-out');
@@ -1273,6 +1506,7 @@ function onCarChange(val) {
   } else {
     nameEl.textContent = val;
     subEl.textContent = 'Xe điện thông minh chính hãng VinFast';
+    if (msbCar) msbCar.textContent = val;
     animateDepositAmount(15000000);
   }
 }
@@ -1289,6 +1523,38 @@ function selectColorSwatch(colorName, btn) {
   colorInput.value = colorName;
   document.getElementById('chipColor').textContent = colorName;
 }
+
+// Scroll smoothly to form when tapping mobile sticky bar
+function scrollToDepositForm() {
+  var formCard = document.getElementById('vfDepositFormCard');
+  if (formCard) {
+    formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(function() {
+      var inputName = document.getElementById('custName');
+      if (inputName) inputName.focus();
+    }, 450);
+  }
+}
+
+// Mobile Sticky Bar scroll listener
+window.addEventListener('scroll', function() {
+  var msb = document.getElementById('vfMobileStickyBar');
+  if (!msb) return;
+  var previewCard = document.getElementById('vfDepPreviewCard');
+  var submitBtn = document.getElementById('btnSubmitDeposit');
+  
+  if (previewCard && submitBtn) {
+    var previewBottom = previewCard.getBoundingClientRect().bottom;
+    var submitRect = submitBtn.getBoundingClientRect();
+    
+    // Show sticky bar once passed preview card, hide when submit button is in view
+    if (previewBottom < 50 && submitRect.top > window.innerHeight - 50) {
+      msb.classList.add('visible');
+    } else {
+      msb.classList.remove('visible');
+    }
+  }
+}, { passive: true });
 
 // Read URL parameters on load
 document.addEventListener('DOMContentLoaded', function() {
@@ -1314,7 +1580,6 @@ document.addEventListener('DOMContentLoaded', function() {
   if (pColor) {
     document.getElementById('inputCarColor').value = pColor;
     document.getElementById('chipColor').textContent = pColor;
-    // Check if matches any swatch
     document.querySelectorAll('.vf-swatch-btn').forEach(function(btn) {
       if (btn.getAttribute('title') && btn.getAttribute('title').toLowerCase().indexOf(pColor.toLowerCase()) !== -1) {
         btn.classList.add('active');
@@ -1410,7 +1675,9 @@ function showDepositModal(name, phone, car, amount) {
 
   document.getElementById('vfDynamicQrImg').src = qrUrl;
 
-  // Show Modal
+  // Show Modal & hide mobile sticky bar
+  var msb = document.getElementById('vfMobileStickyBar');
+  if (msb) msb.classList.remove('visible');
   document.getElementById('vfDepositModal').classList.add('active');
 
   // Trigger Confetti Celebration
@@ -1430,18 +1697,18 @@ function vfFireConfetti() {
   canvas.height = window.innerHeight;
 
   var pieces = [];
-  var numberOfPieces = 90;
+  var numberOfPieces = (window.innerWidth < 600) ? 60 : 90;
   var colors = ['#2563EB', '#60A5FA', '#F59E0B', '#10B981', '#ffffff', '#F43F5E'];
 
   for (var i = 0; i < numberOfPieces; i++) {
     pieces.push({
       x: canvas.width * 0.5,
       y: canvas.height * 0.4,
-      w: Math.random() * 9 + 6,
-      h: Math.random() * 9 + 6,
+      w: Math.random() * 8 + 5,
+      h: Math.random() * 8 + 5,
       color: colors[Math.floor(Math.random() * colors.length)],
-      vx: (Math.random() - 0.5) * 16,
-      vy: (Math.random() - 0.7) * 18,
+      vx: (Math.random() - 0.5) * 15,
+      vy: (Math.random() - 0.7) * 17,
       rotation: Math.random() * 360,
       rotationSpeed: (Math.random() - 0.5) * 12,
       opacity: 1
@@ -1457,8 +1724,8 @@ function vfFireConfetti() {
       var p = pieces[i];
       p.x += p.vx;
       p.y += p.vy;
-      p.vy += 0.38; // gravity
-      p.vx *= 0.98; // air drag
+      p.vy += 0.38;
+      p.vx *= 0.98;
       p.rotation += p.rotationSpeed;
       if (elapsed > 1800) {
         p.opacity -= 0.02;
