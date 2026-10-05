@@ -413,28 +413,66 @@ $xe_dich_vu = get_posts([
 </section>
 
 <!-- ============================
-     BANNER KÊU GỌI ĐẶT CỌC XE TRỰC TUYẾN
+     BANNER KÊU GỌI ĐẶT CỌC XE TRỰC TUYẾN (DẠNG CARD GỌN GÀNG)
      ============================ -->
-<section class="vf-deposit-strip" style="background: linear-gradient(135deg, #060B1A 0%, #102A71 60%, #1E40AF 100%); color: #ffffff; padding: 46px 20px; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);">
-  <div class="container" style="position: relative; z-index: 2;">
-    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
-      <div style="max-width: 680px;">
-        <span style="display: inline-block; background: rgba(255,255,255,0.14); color: #93C5FD; font-size: 11.5px; font-weight: 800; padding: 4px 14px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.2);">
-          ⚡ CHÍNH SÁCH ĐẶT CỌC TRỰC TUYẾN CHÍNH HÃNG
+<section class="vf-deposit-card-section" style="padding: 16px 0 32px 0; background: transparent;">
+  <style>
+  @media (max-width: 900px) {
+    .vf-deposit-banner-card {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      padding: 24px 20px !important;
+      gap: 18px !important;
+      border-radius: 16px !important;
+    }
+    .vf-dep-card-btns {
+      width: 100% !important;
+    }
+    .vf-dep-card-btns .vf-btn {
+      flex: 1 1 100% !important;
+      text-align: center !important;
+      justify-content: center !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+  }
+  </style>
+  <div class="container">
+    <div class="vf-deposit-banner-card" style="
+      background: linear-gradient(135deg, #070F26 0%, #102A71 60%, #1E40AF 100%);
+      border-radius: 20px;
+      padding: 34px 40px;
+      color: #ffffff;
+      box-shadow: 0 12px 35px rgba(16, 42, 117, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    ">
+      <!-- Glow ambient light -->
+      <div style="position: absolute; right: -40px; top: -40px; width: 260px; height: 260px; background: radial-gradient(circle, rgba(96, 165, 250, 0.18) 0%, transparent 70%); pointer-events: none;"></div>
+
+      <div style="max-width: 640px; position: relative; z-index: 2;">
+        <span style="display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.12); color: #93C5FD; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 20px; letter-spacing: 0.8px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(8px);">
+          ⚡ CHÍNH SÁCH ĐẶT CỌC TRỰC TUYẾN
         </span>
-        <h3 style="font-size: clamp(1.35rem, 2.6vw, 1.85rem); font-weight: 900; color: #ffffff; margin: 0 0 8px 0; text-transform: uppercase;">
+        <h3 style="font-size: clamp(1.25rem, 2.2vw, 1.65rem); font-weight: 900; color: #ffffff; margin: 0 0 8px 0; text-transform: uppercase; line-height: 1.35; letter-spacing: -0.2px;">
           Đặt cọc online — Giữ trọn ưu đãi & Giao xe sớm nhất
         </h3>
         <p style="font-size: 13.5px; color: #CBD5E1; margin: 0; line-height: 1.55;">
-          Bảo toàn toàn bộ quà tặng voucher tháng, ưu đãi lệ phí trước bạ và thanh toán an toàn 100% qua mã VietQR đại lý ủy quyền VinFast Tân Á Châu.
+          Bảo toàn 100% quà tặng voucher tháng, ưu đãi lệ phí trước bạ và thanh toán an toàn qua mã VietQR đại lý ủy quyền VinFast Tân Á Châu.
         </p>
       </div>
-      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-        <a href="<?php echo esc_url(home_url('/dat-coc-xe/')); ?>" class="vf-btn vf-btn-primary" style="background: linear-gradient(135deg, #2563EB, #1D4ED8); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); white-space: nowrap; height: 48px; line-height: 48px; padding: 0 28px; font-weight: 800; font-size: 13.5px; border-radius: 10px; text-decoration: none;">
-          ✓ ĐẶT CỌC XE NGAY
+
+      <div class="vf-dep-card-btns" style="display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; position: relative; z-index: 2;">
+        <a href="<?php echo esc_url(home_url('/dat-coc-xe/')); ?>" class="vf-btn vf-btn-primary" style="background: linear-gradient(135deg, #2563EB, #1D4ED8); box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45); white-space: nowrap; height: 46px; line-height: 46px; padding: 0 26px; font-weight: 800; font-size: 13px; border-radius: 10px; text-decoration: none; border: none;">
+          ✓ ĐẶT CỌC NGAY
         </a>
-        <a href="<?php echo esc_url(home_url('/dang-ky-lai-thu/')); ?>" class="vf-btn vf-btn-outline" style="color: #ffffff; border-color: rgba(255,255,255,0.5); white-space: nowrap; height: 48px; line-height: 48px; padding: 0 24px; font-weight: 700; font-size: 13.5px; border-radius: 10px; text-decoration: none;">
-          ĐĂNG KÝ LÁI THỬ
+        <a href="<?php echo esc_url(home_url('/dang-ky-lai-thu/')); ?>" class="vf-btn vf-btn-outline" style="color: #ffffff; border-color: rgba(255,255,255,0.4); white-space: nowrap; height: 46px; line-height: 46px; padding: 0 22px; font-weight: 700; font-size: 13px; border-radius: 10px; text-decoration: none;">
+          LÁI THỬ XE
         </a>
       </div>
     </div>
